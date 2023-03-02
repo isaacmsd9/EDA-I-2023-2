@@ -163,7 +163,7 @@ void Torre()
         
         } 
         
-        printf("\n\n"); 
+        printf("\n\n");
     } 
 
 }
