@@ -28,7 +28,7 @@ int main()
             case 3:
             return 0;
             default:
-            printf("Opción no válida.\n");
+            printf("\n********** Opción no válida **********\n");
         }
 
     }
@@ -58,7 +58,9 @@ void Alfil()
         }
     }
     
-    // cargar las posiciones por la que puede pasar el alfil //
+//--------------------- cargar las posiciones por la que puede pasar la torre ------------------------------//
+    
+//---------------------------------Posición 1---------------------------------------------//  
     
     for (i=x, j=y; (i<8&&j>=0); i++, j--) // valida que el contador no pase los limites del tablero//
     {
@@ -67,7 +69,9 @@ void Alfil()
             tablero[i][j]=1;
         }
     }
-    
+
+//---------------------------------Posición 2---------------------------------------------//    
+
     for (i=x, j=y; (i>=0&&j<8); i--, j++)
     {
         if (x+y == i+j)
@@ -76,6 +80,8 @@ void Alfil()
         } 
     }
     
+//---------------------------------Posición 3---------------------------------------------//    
+
     for (i=x, j=y; (i<8||j<=0); i++, j++)
     {
         if (i>x&&j>y)
@@ -83,6 +89,8 @@ void Alfil()
             tablero[i][j]=1; 
         }  
     } 
+
+//---------------------------------Posición 4---------------------------------------------//    
     
     for (i=x, j=y; (i>=0&&j>=0); i--, j--)
     {
@@ -91,13 +99,14 @@ void Alfil()
             tablero[i][j]=1; 
         }  
     } 
-  
+
+//---------------------------------------------------------------------------------------------//
 
     tablero[x][y]=7; // la posicion del alfil 
     
-    //  impresion del tablero de ajedrez //
-    
     printf("\n \n \t \t \t \t LAS COORDENADAS DEL ALFIL SON: (x:%d, y:%d) \n \n \n",x,y);
+    
+//-----------------------------impresion del tablero de ajedrez------------------------------------------//
     
     for (j = 7; j >= 0; j--){ 
         
@@ -141,11 +150,78 @@ void Torre()
         }
     }
     
+//--------------------- cargar las posiciones por la que puede pasar la torre ------------------------------//
+    
+//---------------------------------Posición 1---------------------------------------------//    
+    
+    for (i=x; i<0 ; i++) // valida que el contador no pase los limites del tablero//      
+    {                                                                                     
+            tablero[i][j]=1;                                                              
+    }                                                                                     
+    for (j=y; j<8;j++) // valida que el contador no pase los limites del tablero//
+    {
+            tablero[i][j]=1;
+        
+    }
+//---------------------------------Posición 2---------------------------------------------//    
+    
+    for (i=x; i>8 ; i--)      
+    {                                                                                     
+            tablero[i][j]=1;                                                              
+    }                                                                                     
+    for (j=y; j>0;j--)
+    {
+            tablero[i][j]=1;
+        
+    }
+    
+//---------------------------------Posición 3---------------------------------------------//    
+
+    for (i=x; i>=0 ; i--) 
+    {
+        tablero[i][j]=1; 
+    } 
+
+    for (j=y; j>8 ; j--)
+    {
+        tablero[i][j]=1; 
+    } 
+    for (i=x; i<8 ; i++)
+    {
+        tablero[i][j]=1; 
+    } 
+
+    for (j=y; j<=0 ; j++)
+    {
+        tablero[i][j]=1; 
+    }
+//---------------------------------Posición 4---------------------------------------------//    
+    for (i=x; i>=0 ; i--)
+    {
+        tablero[i][j]=1; 
+    } 
+
+    for (j=y; j>8 ; j--)
+    {
+        tablero[i][j]=1; 
+    }
+    for (i=x; i<8 ; i++)
+    {
+        tablero[i][j]=1; 
+    } 
+
+    for (j=y; j<=0 ; j++)
+    {
+        tablero[i][j]=1; 
+    }
+    
+//-------------------------------------------------------------------------------------------------------//
+    
     tablero[x][y]=7; // la posicion de la torre
     
-    //  impresion del tablero de ajedrez //
-    
     printf("\n \n \t \t \t \t LAS COORDENADAS DE LA TORRE SON: (x:%d, y:%d) \n \n \n",x,y);
+    
+//-----------------------------impresion del tablero de ajedrez------------------------------------------//
     
     for (j = 7; j >= 0; j--){ 
         
@@ -163,7 +239,6 @@ void Torre()
         
         } 
         
-        printf("\n\n");
+        printf("\n\n"); 
     } 
-
 }
