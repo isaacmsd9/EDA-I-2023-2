@@ -71,4 +71,3 @@ void imprimirArreglo(struct pelicula arreglo [TAM])
         }
     }
 }
- 
