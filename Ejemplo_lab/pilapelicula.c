@@ -40,7 +40,7 @@ struct pelicula
         getchar();
         printf("Ingrese año película:");
         setbuf(stdin, NULL);
-        scanf("%d", &movie.anio);
+        scanf("%hd", &movie.anio);
         movie.numDirectores = NUM_DIR;
         for (enesimo=0 ; enesimo<NUM_DIR ; enesimo++)
         { 
@@ -65,7 +65,7 @@ void imprimirArreglo(struct pelicula arreglo [TAM])
         printf("GÉNERO: %s\n", arreglo[iesimo].genero);
         printf("AÑO: %d\n", arreglo[iesimo].anio);
         printf("DIRECTOR(ES):\n");
-        for (enesimo=0 ; enesimo<arreglo[iesimo].numDirectores ;kenesimo++)
+        for (enesimo=0 ; enesimo<arreglo[iesimo].numDirectores ;enesimo++)
         {
             printf("%s\n", arreglo[iesimo].directores[enesimo]);
         }
