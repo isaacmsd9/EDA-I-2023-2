@@ -10,7 +10,7 @@ struct pelicula
 };
 
 void imprimirDatosPelicula(struct pelicula);
-struct llenarDatosPelicula(char *nombre, char *genero, short anio,short numDirectores, char *directores[10]);
+struct pelicula llenarDatosPelicula(char *, char *, short ,short , char *[10]);
 
 int main()
 {
@@ -18,7 +18,7 @@ int main()
     directores[0] = "Lana Wachowski"; 
     directores[1] = "Andy Wachowski";
     
-    struct pelicula matrix = llenarDatosPelicula("The matrix", "Ciencia ficción", 1999, 2, directores);
+    struct pelicula llenarDatosPelicula("The matrix", "Ciencia ficción", 1999, 2, directores);
     
     imprimirDatosPelicula(matrix);
     
@@ -44,7 +44,7 @@ struct llenarDatosPelicula(char *nombre, char *genero, short anio,short numDirec
 
 }
 
-void imprimirDatosPelicula(struct pelicula movie)
+void pelicula imprimirDatosPelicula(struct pelicula movie)
 {
     printf("PELICULA: %s\n", movie.nombre);
     printf("GENERO: %s\n", movie.genero);
