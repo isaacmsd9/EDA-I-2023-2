@@ -18,14 +18,14 @@ int main()
     directores[0] = "Lana Wachowski"; 
     directores[1] = "Andy Wachowski";
     
-    struct pelicula llenarDatosPelicula("The matrix", "Ciencia ficción", 1999, 2, directores);
+    struct pelicula matrix = llenarDatosPelicula("The matrix", "Ciencia ficción", 1999, 2, directores);
     
     imprimirDatosPelicula(matrix);
     
     return 0;
 }
 
-struct llenarDatosPelicula(char *nombre, char *genero, short anio,short numDirectores, char *directores[10])
+struct pelicula llenarDatosPelicula(char *nombre, char *genero, short anio,short numDirectores, char *directores[10])
 {
     struct pelicula movie; 
     movie.nombre = nombre; 
