@@ -10,7 +10,7 @@ struct pelicula
 };
 
 void imprimirDatosPelicula(struct pelicula);
-struct nodo llenarDatosPelicula(char *, char *, short , short , char *[10]);
+struct llenarDatosPelicula(char *nombre, char *genero, short anio,short numDirectores, char *directores[10]);
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
     return 0;
 }
 
-struct nodo llenarDatosPelicula(char *nombre, char *genero, short anio,short numDirectores, char *directores[10])
+struct llenarDatosPelicula(char *nombre, char *genero, short anio,short numDirectores, char *directores[10])
 {
     struct pelicula movie; 
     movie.nombre = nombre; 
