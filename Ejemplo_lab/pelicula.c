@@ -44,7 +44,7 @@ struct pelicula llenarDatosPelicula(char *nombre, char *genero, short anio,short
 
 }
 
-void pelicula imprimirDatosPelicula(struct pelicula movie)
+void imprimirDatosPelicula(struct pelicula movie)
 {
     printf("PELICULA: %s\n", movie.nombre);
     printf("GENERO: %s\n", movie.genero);
