@@ -27,12 +27,12 @@ int main(){
         switch(opcion)
         {
             case 1:
-            printf("\nIngrese la posicion de la Reina en este formato -> x,y: ") ; 
+            printf("\nIngrese la posicion del alfil en este formato -> x,y: ") ; 
             scanf("%d , %d", x, y); 
             Reina( x , y);
             break;
             case 2:
-            printf("\nIngrese la posicion del Rey en este formato -> x,y: ") ; 
+            printf("\nIngrese la posicion del alfil en este formato -> x,y: ") ; 
             scanf("%d , %d", x, y); 
              Rey( x , y);
              break;
@@ -202,7 +202,7 @@ void Rey(int *x , int *y)
     int i1 = *x-1;
     int j1 = *y-1;
 
-    if ( i1>0 && j1>0 )
+    if ( i1<8 && j1<8 )
     {
         tablero[i1][j1]=1;
         i1--;
@@ -223,39 +223,38 @@ void Rey(int *x , int *y)
    
 //---------------------------------Posición 3---------------------------------------------//    
 
-    int i3 = *x-1;
+    int i3 = *x-1;        
     int j3 = *y+1;
 
-    if ( i3>0 && j3<8 )
+    if ( i3<8 && j3>0 )
     {
-        tablero[i3][j3]=1;
+        tablero[i3][j3]=1;            //problema
         i3--;
         j3++;
     }   
 
 //---------------------------------Posición 4---------------------------------------------//    
-    
+   
     int i4 = *x+1;
     int j4 = *y-1;
 
     if ( i4>0 && j4<8 )
     {
         tablero[i4][j4]=1;
-        i4--;
-        j4++;
+        i4++;
+        j4--;
     } 
    
 //---------------------------------Posición 5---------------------------------------------//    
     
-    int i5 = *x;
+    int i5 = *x;        
     int j5 = *y+1;
     
     if (i5<8)   
     {
         tablero[i5][j5]=1; 
-        i5++;
     }                                                                                     
-    if (j5<8) 
+    if (j5<8)                   //problema
     {
         tablero[i5][j5]=1;
         j5++;
@@ -266,10 +265,9 @@ void Rey(int *x , int *y)
     int i6 = *x;
     int j6 = *y-1;
     
-    if (i6>0)   
+    if (i6<8)   
     {
         tablero[i6][j6]=1; 
-        i6--;
     }                                                                                     
     if (j6>8) 
     {
@@ -287,12 +285,10 @@ void Rey(int *x , int *y)
         tablero[i7][j7]=1; 
         i7++;
     }                                                                                     
-    if (j7<0)                //****R
+    if (j7<0)                
     {
         tablero[i7][j7]=1;
-        j7--;
     }
-    
 //---------------------------------Posición 8---------------------------------------------//    
     int i8 = *x-1;
     int j8 = *y;
@@ -305,18 +301,17 @@ void Rey(int *x , int *y)
     if (j8<8) 
     {
         tablero[i8][j8]=1;
-        j8++;
     }
     
 //-------------------------------------------------------------------------------------------------------//
     
     tablero[*x][*y]=7; // la posicion de la torre
     
-    printf("\n \n \t \t \t \t LAS COORDENADAS DEL REY SON: (x:%d, y:%d) \n \n \n", *x, *y);
+    printf("\n \n \t \t \t \t LAS COORDENADAS DE LA TORRE SON: (x:%d, y:%d) \n \n \n", *x, *y);
     
 //-----------------------------impresion del tablero de ajedrez------------------------------------------//
     
-    for (j = 7; j >= 0; j--){ 
+    for (j = 7; j > 0; j--){ 
         
         if (i != 0 ) printf("%d", j); //imprime valores en Y
         
