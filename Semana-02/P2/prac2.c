@@ -27,12 +27,12 @@ int main(){
         switch(opcion)
         {
             case 1:
-            printf("\nIngrese la posicion del alfil en este formato -> x,y: ") ; 
+            printf("\nIngrese la posicion de la Reina en este formato -> x,y: ") ; 
             scanf("%d , %d", x, y); 
             Reina( x , y);
             break;
             case 2:
-            printf("\nIngrese la posicion del alfil en este formato -> x,y: ") ; 
+            printf("\nIngrese la posicion del Rey en este formato -> x,y: ") ; 
             scanf("%d , %d", x, y); 
              Rey( x , y);
              break;
@@ -195,7 +195,7 @@ void Rey(int *x , int *y)
         }
     }
     
-//--------------------- cargar las posiciones por la que puede pasar la torre ------------------------------//
+//--------------------- cargar las posiciones por la que puede pasar el rey ------------------------------//
     
 //---------------------------------Posición 1---------------------------------------------//  
 
@@ -305,9 +305,9 @@ void Rey(int *x , int *y)
     
 //-------------------------------------------------------------------------------------------------------//
     
-    tablero[*x][*y]=7; // la posicion de la torre
+    tablero[*x][*y]=7; // la posicion del Rey
     
-    printf("\n \n \t \t \t \t LAS COORDENADAS DE LA TORRE SON: (x:%d, y:%d) \n \n \n", *x, *y);
+    printf("\n \n \t \t \t \t LAS COORDENADAS DEL REY SON: (x:%d, y:%d) \n \n \n", *x, *y);
     
 //-----------------------------impresion del tablero de ajedrez------------------------------------------//
     
