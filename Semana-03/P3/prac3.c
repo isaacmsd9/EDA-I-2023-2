@@ -104,7 +104,7 @@ struct coordenadas* Caballo(int x, int y)
         }
     }
     
-//--------------------- cargar las posiciones por la que puede pasar la torre ------------------------------//
+//--------------------- cargar las posiciones por la que puede pasar el caballo ------------------------------//
     
 //---------------------------------Posición 1---------------------------------------------//  
 
@@ -220,9 +220,9 @@ struct coordenadas* Caballo(int x, int y)
 
 //---------------------------------------------------------------------------------------------//
 
-    tablero[x][y]=7; // la posicion del alfil 
+    tablero[x][y]=7; // la posicion del caballo
     
-    printf("\n \n \t \t \t \t LAS COORDENADAS DEL ALFIL SON: (x:%d, y:%d) \n \n \n",x,y);
+    printf("\n \n \t \t \t \t LAS COORDENADAS DEL CABALLO SON: (x:%d, y:%d) \n \n \n",x,y);
     
 //-----------------------------impresion del tablero de ajedrez------------------------------------------//
     
@@ -238,7 +238,7 @@ struct coordenadas* Caballo(int x, int y)
          
             if(tablero[i][j]==1) printf("X\t");
             
-            if(tablero[i][j]==7) printf("A\t");
+            if(tablero[i][j]==7) printf("C\t");
         
         } 
         
@@ -446,7 +446,7 @@ struct coordenadas* Reina(int x , int y)
         }
     }
     
-    //--------------------- cargar las posiciones por la que puede pasar la torre ------------------------------//
+    //--------------------- cargar las posiciones por la que puede pasar la Reina ------------------------------//
     
 //---------------------------------Posición 1---------------------------------------------//  
     
@@ -566,7 +566,7 @@ struct coordenadas* Rey(int x , int y)
         }
     }
     
-//--------------------- cargar las posiciones por la que puede pasar la torre ------------------------------//
+//--------------------- cargar las posiciones por la que puede pasar el Rey ------------------------------//
     
 //---------------------------------Posición 1---------------------------------------------//  
 
@@ -599,7 +599,7 @@ struct coordenadas* Rey(int x , int y)
 
     if ( i3<8 && j3>0 )
     {
-        tablero[i3][j3]=1;            //problema
+        tablero[i3][j3]=1;           
         i3--;
         j3++;
     }   
@@ -625,7 +625,7 @@ struct coordenadas* Rey(int x , int y)
     {
         tablero[i5][j5]=1; 
     }                                                                                     
-    if (j5<8)                   //problema
+    if (j5<8)                   
     {
         tablero[i5][j5]=1;
         j5++;
