@@ -45,6 +45,7 @@
             
             printf("\t]\n");
         }
+        
         free (arreglo);
     }
     
