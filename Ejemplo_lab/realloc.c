@@ -10,6 +10,7 @@
     arreglo = (int *)malloc (num * sizeof(int));
     
     if (arreglo!=NULL) {
+        
         for (cont=0 ; cont < num ; cont++)
         {
             printf("Inserte el elemento %d del conjunto.\n",cont+1);
