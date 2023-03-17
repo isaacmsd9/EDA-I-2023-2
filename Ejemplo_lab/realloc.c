@@ -8,6 +8,7 @@
     scanf("%d",&num);
     
     arreglo = (int *)malloc (num * sizeof(int));
+    
     if (arreglo!=NULL) {
         for (cont=0 ; cont < num ; cont++)
         {
