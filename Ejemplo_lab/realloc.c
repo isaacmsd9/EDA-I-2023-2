@@ -18,7 +18,7 @@
         printf("Vector insertado:\n\t[");
         for (cont=0 ; cont < num ; cont++)
         { 
-            printf("\t%d",*(arreglo+cont);
+            printf("\t%d",*(arreglo+cont));
         }
         
         printf("\t]\n");
