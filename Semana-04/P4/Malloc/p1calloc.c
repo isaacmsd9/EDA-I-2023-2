@@ -40,18 +40,25 @@ int main()
 void Alfil()
 {
     int x, y, i, j; 
-    int (*tablero)[8];
+    int **tablero;
     
-    tablero = malloc(sizeof(*tablero) * 8);
-    tablero = malloc(sizeof(int[8][8]));
-    free(tablero);
+    tablero[8] = malloc( sizeof *tablero * 8 );
+    
+    if (tablero == NULL)
+    {
+        printf("\nMemoria no puede ser asignada.");
+        
+    }
+    else
+    {
+        printf("\nMemoria asignada con exito usando malloc\n");
+		printf("\n tablero = %pc\n", tablero); 
+    }
 
     printf("\nIngrese x: ");
     scanf("%d",&x);
     printf("Ingrese y: ");
     scanf("%d",&y);
-    
-    //int (*tablero)[8] = malloc( sizeof *tablero * 8 );
 
     // cerar toda la matriz 
 
@@ -131,16 +138,27 @@ void Alfil()
         
         printf("\n\n"); 
     }  
+
+    free(tablero);
 }
 
 void Torre()
 {
     int x, y, i, j; 
-    int (*tablero)[8];
+    int **tablero;
     
-    tablero = malloc(sizeof(*tablero) * 8);
-    tablero = malloc(sizeof(int[8][8]));
-    free(tablero);
+    tablero[8] = malloc( sizeof *tablero * 8 );
+    
+    if (tablero == NULL)
+    {
+        printf("\nMemoria no puede ser asignada.");
+        
+    }
+    else
+    {
+        printf("\nMemoria asignada con exito usando malloc\n");
+		printf("\n tablero = %pc\n", tablero); 
+    }
     
     printf("\nIngrese x: ");
     scanf("%d",&x);
@@ -228,4 +246,6 @@ void Torre()
         
         printf("\n\n"); 
     } 
+
+    free(tablero);
 }
