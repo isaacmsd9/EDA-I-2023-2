@@ -44,6 +44,8 @@ void Alfil()
     
     tablero = calloc(8, sizeof(int*));
     
+    tablero[8] = malloc( sizeof *tablero * 8 );
+    
     for(int i = 0; i != 8; ++i)
     {
         tablero[i] = malloc(8 * sizeof(int));
@@ -55,29 +57,37 @@ void Alfil()
         
     }
     
-    tablero[8] = malloc( sizeof *tablero * 8 );
-    
-    if (tablero == NULL)
-    {
-        printf("\nMemoria no puede ser asignada.");
+    if (tablero == NULL) {
+       
+        printf("\nMemoria no asignada.\n");
+        exit(0);
         
     }
-    else
+    else 
     {
-        printf("\nMemoria asignada con exito usando malloc\n");
-		printf("\n tablero = %pc\n", tablero); 
-    }
-    
-    tablero = (int**)realloc(tablero, (8)*sizeof(int*));
-    
-    for(i=8; i<8; i++)
-    {
-        tablero[i]=NULL;
-    }
-    
-    for(j=0; j<8; j++)
-    {
-        tablero[i]=(int*)realloc(tablero[i], (j)*sizeof(int));
+        //La memoria se ha asignado correctamente
+       
+        printf("\nMemoria asignada con exito usando malloc.\n");
+        printf("\n tablero = %pc\n", tablero);
+        // La memoria se ha asignado correctamente
+        printf("\nMemoria asignada con exito usando calloc.\n");
+        printf("\n tablero = %pc\n", tablero);
+        
+        //Reasignar memoria dinámicamente usando realloc()
+       
+        tablero = (int**)realloc(tablero, (8)*sizeof(int*));
+        printf("\nMemoria re-asignada con exito usando realloc.\n");
+        
+        for(i=8; i<8; i++)
+        {
+            tablero[i]=NULL;
+        }
+        
+        for(j=0; j<8; j++)
+        {
+            tablero[i]=(int*)realloc(tablero[i], (j)*sizeof(int));
+        }
+        
     }
     
     printf("\nIngrese x: ");
@@ -174,6 +184,8 @@ void Torre()
     
     tablero = calloc(8, sizeof(int*));
     
+    tablero[8] = malloc( sizeof *tablero * 8 );
+    
     for(int i = 0; i != 8; ++i)
     {
         tablero[i] = malloc(8 * sizeof(int));
@@ -185,29 +197,37 @@ void Torre()
         
     }
     
-    tablero[8] = malloc( sizeof *tablero * 8 );
-    
-    if (tablero == NULL)
-    {
-        printf("\nMemoria no puede ser asignada.");
+    if (tablero == NULL) {
+       
+        printf("\nMemoria no asignada.\n");
+        exit(0);
         
     }
-    else
+    else 
     {
-        printf("\nMemoria asignada con exito usando malloc\n");
-		printf("\n tablero = %pc\n", tablero); 
-    }
-    
-    tablero = (int**)realloc(tablero, (8)*sizeof(int*));
-    
-    for(i=8; i<8; i++)
-    {
-        tablero[i]=NULL;
-    }
-    
-    for(j=0; j<8; j++)
-    {
-        tablero[i]=(int*)realloc(tablero[i], (j)*sizeof(int));
+        //La memoria se ha asignado correctamente
+       
+        printf("\nMemoria asignada con exito usando malloc.\n");
+        printf("\n tablero = %pc\n", tablero);
+        // La memoria se ha asignado correctamente
+        printf("\nMemoria asignada con exito usando calloc.\n");
+        printf("\n tablero = %pc\n", tablero);
+        
+        //Reasignar memoria dinámicamente usando realloc()
+       
+        tablero = (int**)realloc(tablero, (8)*sizeof(int*));
+        printf("\nMemoria re-asignada con exito usando realloc.\n");
+        
+        for(i=8; i<8; i++)
+        {
+            tablero[i]=NULL;
+        }
+        
+        for(j=0; j<8; j++)
+        {
+            tablero[i]=(int*)realloc(tablero[i], (j)*sizeof(int));
+        }
+        
     }
     
     printf("\nIngrese x: ");
