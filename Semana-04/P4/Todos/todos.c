@@ -78,16 +78,6 @@ void Alfil()
         tablero = (int**)realloc(tablero, (8)*sizeof(int*));
         printf("\nMemoria re-asignada con exito usando realloc.\n");
         
-        for(i=8; i<8; i++)
-        {
-            tablero[i]=NULL;
-        }
-        
-        for(j=0; j<8; j++)
-        {
-            tablero[i]=(int*)realloc(tablero[i], (j)*sizeof(int));
-        }
-        
     }
     
     printf("\nIngrese x: ");
@@ -217,16 +207,6 @@ void Torre()
        
         tablero = (int**)realloc(tablero, (8)*sizeof(int*));
         printf("\nMemoria re-asignada con exito usando realloc.\n");
-        
-        for(i=8; i<8; i++)
-        {
-            tablero[i]=NULL;
-        }
-        
-        for(j=0; j<8; j++)
-        {
-            tablero[i]=(int*)realloc(tablero[i], (j)*sizeof(int));
-        }
         
     }
     
