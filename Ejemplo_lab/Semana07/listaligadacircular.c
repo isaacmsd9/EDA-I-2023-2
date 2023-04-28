@@ -1,219 +1,180 @@
+// Codigo para implementar operaciones en una lista ligada circular
+
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Nodo {
-    int dato;
-    struct Nodo *siguiente;
+struct Node {
+  int data;
+  struct Node* next;
 };
 
-struct Nodo* addToEmpty(struct Nodo* ultimo, int dato) {
-    if (ultimo != NULL)
-    {
-        return ultimo;
-    }
+struct Node* addToEmpty(struct Node* last, int data) {
+  if (last != NULL) return last;
 
-    //asigns memoria al nuevo nodo
-    struct Nodo* nuevoNodo = (struct Nodo*)malloc(sizeof(struct Nodo));
+  // asigna memoria al nuevo nodo
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 
-    //se asignna dato al nuevo nodo
-    nuevoNodo->dato = dato;
+  // se asigna dato al nuevo nodo
+  newNode->data = data;
 
-    //se asigna como ultimo al nuevo nodo
-    ultimo = nuevoNodo;
+  // se asigna como last al nuevo nodo
+  last = newNode;
 
-    //Se crea enlace a si mismo
-    ultimo->siguiente = ultimo;
+  // se crea enlace a si mismo
+  last->next = last;
 
-    return ultimo;
+  return last;
 }
 
-//agregar nodo por el frente
-struct Nodo* addFront(struct Nodo* ultimo, int  dato){
-    
-    //se revisa si la lista está vacía
-    
-    if(ultimo == NULL){
-        return addToEmpty(ultimo, dato);
-    }
-    
-    //Se asigna memoria al nuevo nodo
-    struct Nodo* nuevoNodo = (struct Nodo*)malloc(sizeof(struct Nodo));
-    
-    //se agraga dato al nuevo nodo
-    nuevoNodo->dato = dato;
-    
-    //se guarda la dirección del primer nodo actual en el nuevo nodo
-    nuevoNodo->siguiente = ultimo->siguiente;
-    
-    //Se hace al nuevo nodo como la cabeza
-    ultimo->siguiente = nuevoNodo;
+// agregar nodo por el frente
+struct Node* addFront(struct Node* last, int data) {
+  // se revisa si la lista está vacía
+  if (last == NULL) return addToEmpty(last, data);
 
-    return ultimo;
+  // se asigna memoria al nuevo nodo
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+  // se agrega dato al nuevo nodo
+  newNode->data = data;
+
+  // se guarda la direccion del primer nodo actual en el nuevo nodo
+  newNode->next = last->next;
+
+  // se hace al nuevo nodo como la cabeza
+  last->next = newNode;
+
+  return last;
 }
 
-//agregar nodo final
-struct Nodo* addEnd(struct Nodo* ultimo, int dato){
-    
-    //se revisa si el nodo está vacío
-    
-    if(ultimo == NULL){
-        return addToEmpty(ultimo, dato);
-    }
-    
-    //Se asigna memoria al nuevo nodo
-    struct Nodo* nuevoNodo = (struct Nodo*)malloc(sizeof(struct Nodo));
-    
-    //se agraga dato al nuevo nodo
-    nuevoNodo->dato = dato;
-    
-    //se almacena la dirección del nodo cabeza al siguiente del nuevo nodo
-    nuevoNodo->siguiente = ultimo->siguiente;
-    
-    //Se hace al nuevo nodo como el último nodo
-    ultimo->siguiente = nuevoNodo;
+// agregar nodo al final
+struct Node* addEnd(struct Node* last, int data) {
+  // se revisa si el nodo está vacío
+  if (last == NULL) return addToEmpty(last, data);
 
-    //Se hace al nuevo nodo como el último nodo
-    ultimo = nuevoNodo;
+  // se asigna memoria al nuevo nodo
+  struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 
-    return ultimo;
+  // se agrega dato al nuevo nodo
+  newNode->data = data;
+
+  // se almacena la dirección del nodo cabeza al siguiente del nuevo nodo
+  newNode->next = last->next;
+
+  // se apunta el actual último nodo al nuevo nodo
+  last->next = newNode;
+
+  // se hace al nuevo nodo como el último nodo
+  last = newNode;
+
+  return last;
 }
 
-// insertar nodo después de un nodoespecífico
+// insertar nodo después de un nodo específico
+struct Node* addAfter(struct Node* last, int data, int item) {
+  // se revisa si la lista está vacía
+  if (last == NULL) return NULL;
 
-struct Nodo* addAfter(struct Nodo* ultimo, int dato, int objeto){
-    
-    //se revisa si el nodo está vacío
-    
-    if(ultimo == NULL){
-        return addToEmpty(ultimo, dato);
+  struct Node *newNode, *p;
+
+  p = last->next;
+  do {
+  // si se encontró el elemento, se coloca el nuevo nodo después de él
+    if (p->data == item) {
+      // se asigna memoria al nuevo nodo
+      newNode = (struct Node*)malloc(sizeof(struct Node));
+
+      // se agrega dato al nodo
+      newNode->data = data;
+
+      // se hace como siguiente el nodo actual siguiente del nuevo nodo
+      newNode->next = p->next;
+
+      // se pone al nuevo nodo como el siguiente de p
+      p->next = newNode;
+
+      // si p es el último nodo, se hace al nuevo nodo como el último nodo
+      if (p == last) last = newNode;
+      return last;
     }
-    struct Nodo *nuevoNodo, *p;
 
-    p= ultimo->siguiente;
+  p = p->next;
+  } while (p != last->next);
 
-    do{
-        //si se encontó el elemento, se coloca el nuevo no después de él
-        if(p->dato == objeto) 
-        {    
-            //Se asigna memoria al nuevo nodo
-            struct Nodo* nuevoNodo = (struct Nodo*)malloc(sizeof(struct Nodo));
-            
-            //se agraga dato al nodo
-            nuevoNodo->dato = dato;
-            
-            //se hace como siguiente el nodo actual siguiente del nuevo nodo
-            
-            nuevoNodo->siguiente = p->siguiente;
-            
-            //Se pone el nuevo nodo como siguiente de p
-            p->siguiente = nuevoNodo;
-
-            //si p es el último nodo, se hace al nuevo nodo como el último nodo
-            if(p == ultimo)
-            {
-                ultimo = nuevoNodo;
-            }
-
-            return ultimo;
-        }
-
-        p = p->siguiente;
-    } while (p != ultimo->siguiente);
-
-    printf("\nEl nodo dado no esta presente en la lista");
-
-    return ultimo;
+  printf("\nEl nodo dado no esta presente en la lista");
+  return last;
 }
 
-//borrar un nodo
-void delateNodo(struct Nodo** ultimo, int llave){
-    
-    //si la lista ligada está vacía
-    
-    if(*ultimo = NULL)
-    {
-        return;
-    }
+// borrar un nodo
+void deleteNode(struct Node** last, int key) {
+  // si la lista ligada está vacía
+  if (*last == NULL) return;
 
-    //si la lista contiene solo un nodo
+  // si la lista contiene solo un nodo
+  if ((*last)->data == key && (*last)->next == *last) {
+    free(*last);
+    *last = NULL;
+    return;
+  }
 
-    if((*ultimo)->dato == llave && (*ultimo)-> siguiente == *ultimo)
-    {
-        free(*ultimo);
-        *ultimo = NULL;
-        return;
-    }
+  struct Node *temp = *last, *d;
 
-    struct Nodo *temporal = *ultimo, *d;
+  // si se va a eliminar el último
+  if ((*last)->data == key) {
+    // encontrar el nodo antes del último nodo
+    while (temp->next != *last) temp = temp->next;
 
-    //si se va a eliminar el último
-    
-    if((*ultimo)->dato == llave) 
-    {
-        //encontrar el nodo antes del último nodo
-        while (temporal->siguiente != *ultimo)
-        {
-            temporal = temporal->siguiente;
-        }
+    // apuntar un nodo temporal al siguiente del último es decir el primer nodo
+    temp->next = (*last)->next;
+    free(*last);
+    *last = temp->next;
+  }
 
-        // apuntar un nodo temporal al siguiente del último es decir el primer nodo
-        temporal->siguiente = (*ultimo)->siguiente;
-        free(*ultimo);
-        *ultimo=temporal->siguiente;
-    }
+  // recorrido al nodo que va a ser eliminado
+  while (temp->next != *last && temp->next->data != key) {
+    temp = temp->next;
+  }
 
-    //recorido al nodo que va ser eliminado
-    while ( temporal->siguiente != *ultimo && temporal->siguiente->dato != llave)
-    {
-        temporal = temporal->siguiente;
-    }
-
-    //Si el nodo a eliminar se encuentra
-    if (temporal->siguiente->dato = llave)
-    {
-        d = temporal->siguiente;
-        temporal->siguiente = d->siguiente;
-        free(d);
-    }
+  // si el nodo a eliminar se encuentra
+  if (temp->next->data == key) {
+    d = temp->next;
+    temp->next = d->next;
+    free(d);
+  }
 }
 
-void traverse(struct Nodo* ultimo) 
-{
-    struct Nodo *p;
+void traverse(struct Node* last) {
+  struct Node* p;
 
-    if(ultimo = NULL)
-    {
-        printf("La lista esta vacía");
-        return;
-    }
+  if (last == NULL) {
+    printf("La lista esta vacia");
+    return;
+  }
 
-    p = ultimo->siguiente;
+  p = last->next;
 
-    do
-    {
-        printf("%d", p->dato);
-        p = p->siguiente;
+  do {
+  printf("%d ", p->data);
+  p = p->next;
 
-    }while( p != ultimo->siguiente);
+  } while (p != last->next);
 }
 
-int main() 
-{
-    struct Nodo* ultimo = NULL;
+int main() {
+  struct Node* last = NULL;
 
-    ultimo = addToEmpty(ultimo, 6);
-    ultimo = addEnd(ultimo, 8);
-    ultimo = addFront(ultimo, 2);
+  last = addToEmpty(last, 6);
+  last = addEnd(last, 8);
+  last = addFront(last, 2);
 
-    ultimo = addAfter(ultimo, 10, 2);
+  last = addAfter(last, 10, 2);
 
-    traverse(ultimo);
+  traverse(last);
 
-    delateNodo(&ultimo, 8);
+  deleteNode(&last, 8);
 
-    printf("\n");
+  printf("\n");
 
-    traverse(ultimo);
+  traverse(last);
 
-    return 0;
+  return 0;
 }
