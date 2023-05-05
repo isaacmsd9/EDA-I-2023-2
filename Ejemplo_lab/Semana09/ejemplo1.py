@@ -1,6 +1,8 @@
 
 print("Hola mundo")
+
 #comentario corto
+
 """comentario largo"""
 
 #puedes poner una función como argumento de una función
@@ -13,3 +15,11 @@ print("Hola mundo")
 #floor() redondea para abajo pero necesita una variable
 #round() redondea no necesita una variable
 #abs() es el valor absoluto quita signos
+
+
+#file=f.read es para cerrar la operación lectura
+#el archivo debe estar en la misma carpeta
+#"a" es apend
+#una cadena es inmutable en cuando a su memoria
+#una variable se le puede cambiar de tipo
+#end.with es solo con un elemento
