@@ -1,4 +1,11 @@
 
+#Python 3.8 versión actual
+# str= "cadena"
+# PI = 3.1416
+# a = true
+# No hay uso de {} ni de ;
+# Investigar ipynb = cuaderno de notas de phyton
+
 print("Hola mundo")
 
 #comentario corto
