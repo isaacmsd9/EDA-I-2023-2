@@ -21,7 +21,7 @@ def menu():
     print('1 Conversion de bases')
     print('2 Serie de Fibonacci')
     print('3 Salir\n')
-    opcion = int(input('Ingrese la opcion:\n'))
+    opcion = int(input('Ingrese la opcion:'))
     if opcion == 1:
         n = int(input('\nIngrese un número entero: '))
         print('\n' + decimal_a_binario(n))
