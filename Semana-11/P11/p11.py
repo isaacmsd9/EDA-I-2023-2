@@ -18,17 +18,17 @@ def fibonacci_inverso(n):
         return fib[::-1]
 
 def menu():
-    print('\nBienvenido, puede realizar las siguientes operaciones:\n')
-    print('1 Conversion de bases')
-    print('2 Serie de Fibonacci')
-    print('3 Salir\n')
-    opcion = int(input('Ingrese la opcion: '))
+    print('\033[1;36mBienvenido, puede realizar las siguientes operaciones:\033[0m\n')
+    print('\033[1;33m1 Conversion de bases\033[0m\n')
+    print('\033[1;33m2 Serie de Fibonacci\033[0m\n')
+    print('\033[1;33m3 Salir\033[0m\n')
+    opcion = int(input('\033[1;34mIngrese la opcion: \033[0m'))
     if opcion == 1:
-        n = int(input('\nIngrese el número entero N: '))
-        print('\n' + decimal_a_binario(n))
+        n = int(input('\n\033[1;34mIngrese el número entero N: \033[0m'))
+        print('\n\033[1;32m' + decimal_a_binario(n) + '\033[0m')
     elif opcion == 2:
-        n = int(input('\nIngrese el número entero N: '))
-        print('\n' + ' '.join(map(str, fibonacci_inverso(n))))
+        n = int(input('\n\033[1;34mIngrese el número entero N: \033[0m'))
+        print('\n\033[1;32m' + ' '.join(map(str, fibonacci_inverso(n))) + '\033[0m')
     elif opcion == 3:
         exit()
 
