@@ -17,7 +17,7 @@ def fibonacci_inverso(n):
         return fib
 
 def menu():
-    print('Bienvenido, puede realizar las siguientes operaciones:\n')
+    print('\nBienvenido, puede realizar las siguientes operaciones:\n')
     print('1 Conversion de bases')
     print('2 Serie de Fibonacci')
     print('3 Salir\n')
