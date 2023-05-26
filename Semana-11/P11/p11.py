@@ -37,7 +37,7 @@ def fibonacci(n):
     else:
         # Caso recursivo: se obtienen los primeros n-1 términos y se agrega el siguiente término al final
         fib = fibonacci(n - 1)
-        fib.append(fib[-1] + fib[-2])
+        fib.insert(fib[0] + fib[1])
         return fib
 
 if __name__ == '__main__':
