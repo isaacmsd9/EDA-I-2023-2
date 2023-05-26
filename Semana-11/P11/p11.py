@@ -60,7 +60,7 @@ if __name__ == '__main__':
         elif opcion == 2:
             # Si el usuario eligió la opción 2, se pide un número entero y se muestran los primeros N términos de la serie de Fibonacci
             n = int(input('\n\033[1;34mIngrese el número entero N: \033[0m'))
-            print('\n\033[1;32m' + ' '.join(map(str, fibonacci(n)[::-1])) + '\033[0m')
+            print('\n\033[1;32m' + ' '.join(map(str, fibonacci(n)[-1])) + '\033[0m')
             
         elif opcion == 3:
             # Si el usuario eligió la opción 3, se termina el programa
