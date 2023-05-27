@@ -1,50 +1,59 @@
-# Función para agregar un libro
-def agregar_libro(books): 
-    titulo = input('Ingrese el título del libro: ') #un libro esta representado por su titulo
-    books.append(titulo) 
-    print('Libro agregado:', titulo)
+# Lista global para almacenar los libros de la biblioteca
+libros = []
 
-# Función para eliminar un libro
-def eliminar_libro(books):
-    titulo = input('Ingrese el título del libro: ')
-    if titulo in books:
-        books.remove(titulo)
-        print('Libro eliminado:', titulo)
-    else:
-        print('Libro no encontrado')
+# Función para agregar un libro a la lista de libros
+def agregar_libro(titulo):
+    libros += [titulo]
 
-# Función para ordenar la biblioteca
-def ordenar_biblioteca(books):
-    books.sort()
-    print('\nLa biblioteca queda con el siguiente orden:\n')
-    for libro in books:
-        print(libro)
-
-# Función para ver la biblioteca
-def ver_biblioteca(books): 
-    print('\nLa biblioteca contiene los siguientes libros:\n')
-    for libro in books: 
-        print(libro)
-
-# Código principal
-if _name_ == '_main_':
-    libros = [] 
-    while True:
-        print('\nBienvenido a la biblioteca, puede realizar las siguientes operaciones:\n')
-        print('1 Agregar libro')
-        print('2 Eliminar libro')
-        print('3 Ordenar biblioteca')
-        print('4 Ver biblioteca')
-        print('5 Salir')
-        option = input('\nIngrese la opción: ')
-        
-        if option == '1':
-            agregar_libro(libros) 
-        elif option == '2':
-            eliminar_libro(libros)
-        elif option == '3':
-            ordenar_biblioteca(libros)
-        elif option == '4':
-            ver_biblioteca(libros)
-        elif option == '5': 
+# Función para eliminar un libro de la lista de libros si está presente
+def eliminar_libro(titulo):
+    for i in range(len(libros)):
+        if libros[i] == titulo:
+            del libros[i]
             break
+
+# Función para ordenar la lista de libros en orden alfabético
+def ordenar_biblioteca():
+    for i in range(len(libros)):
+        for j in range(i + 1, len(libros)):
+            if libros[i] > libros[j]:
+                libros[i], libros[j] = libros[j], libros[i]
+
+# Función para mostrar los libros registrados en la biblioteca
+def ver_biblioteca():
+    for libro in libros:
+        print(libro)
+
+# Bucle principal del programa
+while True:
+    # Muestra el menú de opciones al usuario
+    print("\nBienvenido a la biblioteca, puede realizar las siguientes operaciones:\n")
+    print("1- Agregar libro")
+    print("2- Eliminar libro")
+    print("3- Ordenar biblioteca")
+    print("4- Ver biblioteca")
+    print("5- Salir")
+
+    # Pide al usuario que ingrese una opción
+    opcion = input("\nIngrese la opción: ")
+
+    # Ejecuta la opción seleccionada por el usuario
+    if opcion == "1":
+        # Pide al usuario el título del libro a agregar
+        titulo = input("\nIngrese el título del libro: ")
+        agregar_libro(titulo)
+    elif opcion == "2":
+        # Pide al usuario el título del libro a eliminar
+        titulo = input("\nIngrese el título del libro: ")
+        eliminar_libro(titulo)
+    elif opcion == "3":
+        # Ordena la biblioteca en orden alfabético
+        ordenar_biblioteca()
+        print("\nLa biblioteca ha sido ordenada.")
+    elif opcion == "4":
+        # Muestra los libros registrados en la biblioteca
+        print("\nLibros registrados en la biblioteca:\n")
+        ver_biblioteca()
+    elif opcion == "5":
+        # Sale del menú y termina el programa
+        break
