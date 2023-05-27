@@ -27,7 +27,7 @@ def ver_biblioteca(books):
         print(libro)
 
 # Código principal
-if name == 'main':
+if __name__ == '__main__':
     libros = [] 
     while True:
         print('\nBienvenido a la biblioteca, puede realizar las siguientes operaciones:\n')
