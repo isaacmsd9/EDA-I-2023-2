@@ -23,7 +23,9 @@ def ver_biblioteca(libros):
 
 # Código principal
 if __name__ == '__main__':
+    
     libros = []  # Lista global para almacenar los libros de la biblioteca
+
     while True:  # Bucle principal del programa
         # Muestra el menú de opciones al usuario
         print("\nBienvenido a la biblioteca, puede realizar las siguientes operaciones:\n")
