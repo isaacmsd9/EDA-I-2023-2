@@ -4,10 +4,8 @@ def agregar_libro(titulo, libros):
 
 # Función para eliminar un libro de la lista de libros si está presente
 def eliminar_libro(titulo, libros):
-    for i in range(len(libros)):
-        if libros[i] == titulo:
-            del libros[i]
-            break
+    if titulo in libros:
+        libros[:] = [libro for libro in libros if libro != titulo]
 
 # Función para ordenar la lista de libros en orden alfabético
 def ordenar_biblioteca(libros):
@@ -23,9 +21,7 @@ def ver_biblioteca(libros):
 
 # Código principal
 if __name__ == '__main__':
-    
     libros = []  # Lista global para almacenar los libros de la biblioteca
-
     while True:  # Bucle principal del programa
         # Muestra el menú de opciones al usuario
         print("\nBienvenido a la biblioteca, puede realizar las siguientes operaciones:\n")
