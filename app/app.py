@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 app = Flask(__name__)
 
 inventario = {}
@@ -121,15 +121,11 @@ def quitar_inventario():
 @app.route('/inventario/ordenar', methods=['GET', 'POST'])
 def ordenar_inventario():
     if request.method == 'POST':
-        # Obtiene el criterio de ordenamiento del formulario enviado por el usuario
         criterio = request.form['criterio']
-        # Ordena el inventario según el criterio seleccionado
-        inventario_ordenado = ordenar_suministros(criterio)
-        # Renderiza la plantilla inventario.html pasándole como parámetro el inventario ordenado
-        return render_template('inventario.html', inventario=inventario_ordenado)
+        ordenados = ordenar_suministros(criterio)
+        return render_template('ordenar_inventario.html', ordenados=ordenados)
     else:
-        # Si no se ha enviado el formulario, redirige al usuario a la página del inventario
-        return redirect(url_for('ver_inventario'))
+        return render_template('ordenar_inventario.html')
 
 @app.route('/personal/menu')
 def menu_personal():
