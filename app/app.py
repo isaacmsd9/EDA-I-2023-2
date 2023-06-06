@@ -118,7 +118,7 @@ def quitar_inventario():
     else:
         return render_template('quitar_inventario.html', quitado=False)
 
-@app.route('/ordenar', methods=['GET', 'POST'])
+@app.route('/inventario/ordenar', methods=['GET', 'POST'])
 def ordenar_inventario():
     if request.method == 'POST':
         # Obtiene el criterio de ordenamiento del formulario enviado por el usuario
