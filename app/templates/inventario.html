@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inventario</title>
+    </head>
+    <body>
+        <h1>Inventario</h1>
+        <ul>
+            {% for codigo, nombre in inventario.items() %}
+                <li>{{ codigo }} - {{ nombre }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Acciones</h2>
+        <ul>
+            <li><a href="/inventario/agregar">Agregar suministro</a></li>
+            <li><a href="/inventario/quitar">Quitar suministro</a></li>
+            <li><a href="/inventario/ordenar">Ordenar suministros</a></li>
+        </ul>
+    </body>
+</html>
