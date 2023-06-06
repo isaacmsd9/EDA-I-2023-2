@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Menú Clientes</title>
+    </head>
+    <body>
+        <h1>Menú Clientes</h1>
+        <ul>
+            <li><a href="/clientes/cobro">Cobro de productos</a></li>
+            <li><a href="/clientes/atender">Atención a problemas</a></li>
+        </ul>
+    </body>
+</html>
+Copiar
+Plantilla cobro_clientes.html para mostrar la página de cobro de productos a clientes:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cobro Clientes</title>
+    </head>
+    <body>
+        {% if total %}
+            <h1>Total a pagar</h1>
+            <p>El total a pagar es: {{ total }}</p>
+        {% else %}
+            <h1>Cobro Clientes</h1>
+
+            <form action="/clientes/cobro" method="post">
+                {% for i in range(10) %}
+                    Producto {{ i + 1 }}: 
+                    <input type="text" name="productos"><br><br> 
+                {% endfor %}
+
+                <input type="submit" value="Calcular total">
+            </form> 
+        {% endif %}
+    </body>
+</html> 
