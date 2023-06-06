@@ -6,6 +6,11 @@
     <body>
         <h1>Trabajadores</h1>
         <ul>
+            <li><a href="/trabajadores/alta">Alta Trabajador</a></li>
+            <li><a href="/trabajadores/baja">Baja Trabajador</a></li>
+            <li><a href="/trabajadores/cambio">Cambio Trabajador</a></li>
+        </ul>
+        <ul>
             {% for codigo, trabajador in trabajadores.items() %}
                 <li>{{ trabajador.nombre }} {{ trabajador.apellido }} - {{ trabajador.puesto }}</li>
             {% endfor %}
