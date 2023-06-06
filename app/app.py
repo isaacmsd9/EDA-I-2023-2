@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
 
 inventario = {}
@@ -123,10 +123,8 @@ def ordenar_inventario():
     if request.method == 'POST':
         # Obtiene el criterio de ordenamiento del formulario enviado por el usuario
         criterio = request.form['criterio']
-        
         # Ordena el inventario según el criterio seleccionado
         inventario_ordenado = ordenar_suministros(criterio)
-        
         # Renderiza la plantilla inventario.html pasándole como parámetro el inventario ordenado
         return render_template('inventario.html', inventario=inventario_ordenado)
     else:
