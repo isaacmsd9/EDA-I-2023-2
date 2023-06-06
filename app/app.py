@@ -118,14 +118,20 @@ def quitar_inventario():
     else:
         return render_template('quitar_inventario.html', quitado=False)
 
-@app.route('/inventario/ordenar', methods=['GET', 'POST'])
+@app.route('/ordenar', methods=['GET', 'POST'])
 def ordenar_inventario():
     if request.method == 'POST':
+        # Obtiene el criterio de ordenamiento del formulario enviado por el usuario
         criterio = request.form['criterio']
-        ordenados = ordenar_suministros(criterio)
-        return render_template('ordenar_inventario.html', ordenados=ordenados)
+        
+        # Ordena el inventario según el criterio seleccionado
+        inventario_ordenado = ordenar_suministros(criterio)
+        
+        # Renderiza la plantilla inventario.html pasándole como parámetro el inventario ordenado
+        return render_template('inventario.html', inventario=inventario_ordenado)
     else:
-        return render_template('ordenar_inventario.html')
+        # Si no se ha enviado el formulario, redirige al usuario a la página del inventario
+        return redirect(url_for('ver_inventario'))
 
 @app.route('/personal/menu')
 def menu_personal():
