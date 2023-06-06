@@ -45,57 +45,9 @@ def index():
 def ver_inventario():
     return render_template('inventario.html', inventario=inventario)
 
-@app.route('/inventario/agregar', methods=['GET', 'POST'])
-def agregar_inventario():
-    if request.method == 'POST':
-        codigo = request.form['codigo']
-        nombre = request.form['nombre']
-        agregar_suministros(codigo, nombre)
-        return render_template('agregar_inventario.html', agregado=True)
-    else:
-        return render_template('agregar_inventario.html', agregado=False)
-
-@app.route('/inventario/quitar', methods=['GET', 'POST'])
-def quitar_inventario():
-    if request.method == 'POST':
-        codigo = request.form['codigo']
-        quitar_suministros(codigo)
-        return render_template('quitar_inventario.html', quitado=True)
-    else:
-        return render_template('quitar_inventario.html', quitado=False)
-
-@app.route('/inventario/ordenar', methods=['GET', 'POST'])
-def ordenar_inventario():
-    if request.method == 'POST':
-        criterio = request.form['criterio']
-        ordenados = ordenar_suministros(criterio)
-        return render_template('ordenar_inventario.html', ordenados=ordenados)
-    else:
-        return render_template('ordenar_inventario.html')
-
 @app.route('/clientes')
 def ver_clientes():
     return render_template('clientes.html', clientes=clientes)
-
-@app.route('/clientes/atender', methods=['GET', 'POST'])
-def atender_clientes():
-    if request.method == 'POST':
-        codigo_producto = request.form['codigo_producto']
-        mensaje = request.form['mensaje']
-        
-        global clientes
-        clientes_nuevos = []
-        
-        for cliente in clientes:
-            clientes_nuevos += [cliente]
-            
-            clientes_nuevos += [{'codigo_producto': codigo_producto, 'mensaje': mensaje}]
-        
-        clientes = clientes_nuevos
-        
-        return render_template('atender_clientes.html', atendido=True)
-    else:
-        return render_template('atender_clientes.html', atendido=False)
 
 @app.route('/trabajadores')
 def ver_trabajadores():
