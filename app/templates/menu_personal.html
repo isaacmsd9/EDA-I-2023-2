@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Menú Personal</title>
+    </head>
+    <body>
+        <h1>Menú Personal</h1>
+        <ul>
+            <li><a href="/personal/alta">Altas</a></li>
+            <li><a href="/personal/baja">Bajas</a></li>
+            <li><a href="/personal/cambio">Cambios de puesto</a></li>
+        </ul>
+    </body>
+</html>
+Copiar
+Plantilla alta_personal.html para mostrar la página de alta de personal:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alta Personal</title>
+    </head>
+    <body>
+        {% if alta %}
+            <h1>Personal dado de alta</h1>
+            <p>El personal ha sido dado de alta correctamente.</p>
+        {% else %}
+            <h1>Alta Personal</h1>
+            <form action="/personal/alta" method="post">
+                <label for="codigo">Código:</label><br>
+                <input type="text" id="codigo" name="codigo"><br><br>
+
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre"><br><br>
+
+                <label for="apellido">Apellido:</label><br>
+                <input type="text" id="apellido" name="apellido"><br><br>
+
+                <label for="puesto">Puesto:</label><br>
+                <input type="text" id="puesto" name="puesto"><br><br>
+
+                <input type="submit" value="Dar de alta">
+            </form> 
+        {% endif %}
+    </body>
+</html>
