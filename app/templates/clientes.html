@@ -5,10 +5,17 @@
     </head>
     <body>
         <h1>Clientes</h1>
-        <ul>
-            {% for cliente in clientes %}
-                <li>{{ cliente.codigo_producto }} - {{ cliente.mensaje }}</li>
-            {% endfor %}
-        </ul>
+        <h2>Cobro de Productos</h2>
+        <form action="/cobro_productos" method="post">
+            <label for="lista_productos">Lista de Productos:</label>
+            <input type="text" id="lista_productos" name="lista_productos">
+            <input type="submit" value="Cobrar">
+        </form>
+        <h2>Atención a Problemas</h2>
+        <form action="/atencion_clientes" method="post">
+            <label for="codigo_producto">Código del Producto:</label>
+            <input type="text" id="codigo_producto" name="codigo_producto">
+            <br><br><label for="mensaje">Mensaje:</label><br><br><textarea id="mensaje" name="mensaje"></textarea><br><br><input type="submit" value="Enviar">
+        </form>
     </body>
 </html>
