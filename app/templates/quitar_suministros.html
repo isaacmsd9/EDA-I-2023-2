@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quitar Suministros</title>
+    </head>
+    <body>
+        <h1>Quitar Suministros</h1>
+        {% if success %}
+            <p>Suministro quitado con éxito</p>
+        {% endif %}
+        <form action="{{ url_for('quitar_suministro') }}" method="post">
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo"><br>
+            <input type="submit" value="Quitar">
+        </form>
+    </body>
+</html>
