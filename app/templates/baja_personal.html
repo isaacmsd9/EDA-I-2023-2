@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Baja de Personal</title>
+    </head>
+    <body>
+        <h1>Baja de Personal</h1>
+        {% if success %}
+            <p>Trabajador dado de baja con éxito</p>
+        {% endif %}
+        <form action="{{ url_for('baja_personal') }}" method="post">
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo"><br>
+            <input type="submit" value="Dar de baja">
+        </form>
+    </body>
+</html>
