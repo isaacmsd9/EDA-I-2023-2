@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cambio de Puesto</title>
+    </head>
+    <body>
+        <h1>Cambio de Puesto</h1>
+        {% if success %}
+            <p>Puesto cambiado con éxito</p>
+        {% endif %}
+        <form action="{{ url_for('cambio_puesto') }}" method="post">
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo"><br>
+            <label for="puesto">Puesto:</label>
+            <input type="text" id="puesto" name="puesto"><br>
+            <input type="submit" value="Cambiar">
+        </form>
+    </body>
+</html>
