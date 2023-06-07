@@ -186,7 +186,7 @@ def baja_personal():
 # La función cambio_puesto_view maneja las solicitudes GET y POST para la ruta /personal/cambio_puesto
 # Esta ruta permite al usuario cambiar el puesto de un trabajador
 @app.route('/personal/cambio_puesto', methods=['GET', 'POST'])
-def cambio_puesto_view():
+def cambio_puesto():
     # Si la solicitud es de tipo POST (el usuario envió el formulario)
     if request.method == 'POST':
         # Se obtienen los valores de los campos del formulario
