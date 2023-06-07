@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ordenar Suministros</title>
+    </head>
+    <body>
+        <h1>Ordenar Suministros</h1>
+        <form action="{{ url_for('ordenar_suministros_view') }}" method="post">
+            <label for="criterio">Criterio:</label>
+            <select id="criterio" name="criterio">
+                <option value="nombre">Nombre</option>
+                <option value="codigo">Código</option>
+            </select><br>
+            <input type="submit" value="Ordenar">
+        </form>
+        {% if ordenados %}
+            <h2>Suministros ordenados:</h2>
+            <ul>
+                {% for codigo, producto in ordenados %}
+                    <li>{{ codigo }} - {{ producto.nombre }} - ${{ producto.precio }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </body>
+</html>
