@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Menú</title>
+        <title>Sistema de Administración de Puma Abarrotero S.A. de C.V.</title>
     </head>
     <body>
-        <h1>Menú</h1>
+        <h1>Sistema de Administración de Puma Abarrotero S.A. de C.V.</h1>
+        <h2>Menú:</h2>
         <ul>
-            <li><a href="/inventario/menu">Administración de Inventario</a></li>
-            <li><a href="/clientes/menu">Atención a Clientes</a></li>
-            <li><a href="/personal/menu">Administración de Personal</a></li>
+            <li><a href="{{ url_for('menu_inventario') }}">Administración de Inventario</a></li>
+            <li><a href="{{ url_for('menu_clientes') }}">Atención a Clientes</a></li>
+            <li><a href="{{ url_for('menu_personal') }}">Administración de Personal</a></li>
         </ul>
     </body>
 </html>
