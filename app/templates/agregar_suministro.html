@@ -17,5 +17,14 @@
             <input type="number" id="precio" name="precio"><br>
             <input type="submit" value="Agregar">
         </form>
+        {% if inventario %}
+            <h2>Suministros agregados:</h2>
+            <ul>
+                {% for codigo, producto in inventario.items() %}
+                    <li>{{ codigo }} - {{ producto.nombre }} - ${{ producto.precio }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <a href="{{ url_for('menu_inventario') }}">Volver al menú de inventario</a>
     </body>
 </html>
