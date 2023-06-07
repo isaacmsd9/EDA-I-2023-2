@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Atender Cliente</title>
+    </head>
+    <body>
+        <h1>Atender Cliente</h1>
+        {% if success %}
+            <p>Queja registrada con éxito</p>
+        {% endif %}
+        <form action="{{ url_for('atender_cliente') }}" method="post">
+            <label for="codigo_producto">Código del producto:</label>
+            <input type="text" id="codigo_producto" name="codigo_producto"><br>
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje"></textarea><br>
+            <input type="submit" value="Registrar">
+        </form>
+    </body>
+</html>
