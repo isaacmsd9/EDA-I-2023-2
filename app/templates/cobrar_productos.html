@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cobrar Productos</title>
+    </head>
+    <body>
+        <h1>Cobrar Productos</h1>
+        {% if success %}
+            <h2>Ticket de pago:</h2>
+            <ul>
+                {% for item in ticket %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <p>Total: ${{ total }}</p>
+        {% endif %}
+        <form action="{{ url_for('cobrar_productos') }}" method="post">
+            <label for="productos">Productos:</label><br>
+            <textarea id="productos" name="productos"></textarea><br>
+            <input type="submit" value="Cobrar">
+        </form>
+    </body>
+</html>
