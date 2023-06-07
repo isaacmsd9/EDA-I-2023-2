@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Menú Inventario</title>
+        <title>Administración de Inventario</title>
     </head>
     <body>
-        <h1>Menú Inventario</h1>
+        <h1>Administración de Inventario</h1>
+        <h2>Menú:</h2>
         <ul>
-            <li><a href="/inventario/agregar">Agregar suministros</a></li>
-            <li><a href="/inventario/quitar">Quitar suministros</a></li>
-            <li><a href="/inventario/ordenar">Ordenar suministros</a></li>
+            <li><a href="{{ url_for('agregar_suministro') }}">Agregar suministros</a></li>
+            <li><a href="{{ url_for('quitar_suministro') }}">Quitar suministros</a></li>
+            <li><a href="{{ url_for('ordenar_suministros_view') }}">Ordenar suministros</a></li>
+            <li><a href="{{ url_for('menu') }}">Menu Inicial</a></li>
         </ul>
     </body>
 </html>
