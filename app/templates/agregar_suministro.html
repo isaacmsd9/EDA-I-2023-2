@@ -5,26 +5,17 @@
     </head>
     <body>
         <h1>Agregar Suministros</h1>
-        {% if success %}
-            <p>Suministro agregado con éxito</p>
-        {% endif %}
-        <form action="{{ url_for('agregar_suministro') }}" method="post">
-            <label for="codigo">Código:</label>
-            <input type="text" id="codigo" name="codigo"><br>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre"><br>
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio"><br>
+        <form action="{{ url_for('agregar_suministros') }}" method="post">
+            <label for="codigo">Código del suministro:</label>
+            <input type="text" id="codigo" name="codigo">
+            <br>
+            <label for="nombre">Nombre del suministro:</label>
+            <input type="text" id="nombre" name="nombre">
+            <br>
+            <label for="cantidad">Cantidad a agregar:</label>
+            <input type="number" id="cantidad" name="cantidad">
+            <br>
             <input type="submit" value="Agregar">
         </form>
-        {% if inventario %}
-            <h2>Suministros agregados:</h2>
-            <ul>
-                {% for codigo, producto in inventario.items() %}
-                    <li>{{ codigo }} - {{ producto.nombre }} - ${{ producto.precio }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        <a href="{{ url_for('menu_inventario') }}">Volver al menú de inventario</a>
     </body>
 </html>
