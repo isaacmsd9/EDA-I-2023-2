@@ -99,7 +99,7 @@ def agregar_suministros_view():
         nombre = request.form['nombre']
         precio = float(request.form['precio'])
         agregar_suministros(codigo, nombre, precio)
-        return render_template('agregar_suministro.html', success=True)
+        return redirect(url_for('menu_clientes'))
     else:
         return render_template('agregar_suministro.html')
 
