@@ -131,9 +131,10 @@ def cobrar_productos():
     if request.method == 'POST':
         lista_productos = request.form.getlist('productos')
         ticket, total = cobro_productos(lista_productos)
-        return render_template('cobrar_productos.html', ticket=ticket, total=total)
+        return render_template('cobrar_productos.html', ticket=ticket, total=total, inventario=inventario)
     else:
-        return render_template('cobrar_productos.html')
+        return render_template('cobrar_productos.html', inventario=inventario)
+
 
 @app.route('/clientes/atender', methods=['GET', 'POST'])
 def atender_cliente():
