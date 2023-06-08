@@ -1,0 +1,13 @@
+<!doctype html>
+<title>Pago Realizado</title>
+<h1>Pago Realizado</h1>
+<h2>Ticket</h2>
+<ul>
+    {% for item in ticket %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+<p>Total: {{ total }}</p>
+<p>Saldo restante en la cuenta: {{ saldo_cuenta }}</p>
+<a href="/clientes/cobrar">Realizar otra compra</a><br>
+<a href="/clientes">Volver al menú de atención a clientes</a>
