@@ -151,10 +151,14 @@ def atender_cliente():
         codigo = request.form['codigo']
         if codigo in inventario:
             producto = inventario[codigo]
-            # Aquí puedes agregar código para almacenar la información ingresada por el usuario en una estructura de datos
-            return render_template('atender_cliente.html', producto=producto)
+            if 'mensaje' in request.form:
+                mensaje = request.form['mensaje']
+                atencion_clientes(codigo, mensaje)
+                return render_template('atender_cliente.html', producto=producto, mensaje='Gracias por su mensaje')
+            else:
+                return render_template('atender_cliente.html', producto=producto)
         else:
-            return render_template('atender_cliente.html', error='Producto no encontrado. Favor de ingresar el código nuevamente.')
+            return render_template('atender_cliente.html', error='Producto no encontrado. Favor de ingresar el código correcto')
     else:
         return render_template('atender_cliente.html')
 

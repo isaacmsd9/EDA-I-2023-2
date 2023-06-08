@@ -1,24 +1,27 @@
-<!doctype html>
-<title>Atender Clientes</title>
-{% if error %}
-    <p>{{ error }}</p>
-{% endif %}
-{% if producto %}
-    <h1>{{ producto.nombre }}</h1>
-    <p>Precio: {{ producto.precio }}</p>
-    <h2>Ingrese su queja</h2>
-    <form action="/clientes/atender" method="post">
-        <input type="hidden" name="codigo" value="{{ codigo }}">
-        <label for="queja">Queja:</label><br>
-        <textarea id="queja" name="queja"></textarea>
-        <br>
-        <input type="submit" value="Enviar">
-    </form>
-{% else %}
-    <form action="/clientes/atender" method="post">
-        <label for="codigo">Código:</label><br>
-        <input type="text" id="codigo" name="codigo">
-        <br>
-        <input type="submit" value="Buscar">
-    </form>
-{% endif %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Atender cliente</title>
+    </head>
+    <body>
+        <h1>Atender cliente</h1>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% elif producto %}
+            <h2>{{ producto.nombre }}</h2>
+            <p>Precio: ${{ producto.precio }}</p>
+            {% if mensaje %}
+                <p>{{ mensaje }}</p>
+            {% else %}
+                <form method="post">
+                    <input type="hidden" name="codigo" value="{{ codigo }}">
+                    <label for="mensaje">Mensaje:</label><br>
+                    <textarea id="mensaje" name="mensaje"></textarea><br>
+                    <input type="submit" value="Enviar">
+                </form>
+            {% endif %}
+        {% endif %}
+        <a href="{{ url_for('menu_clientes') }}">Volver al menú de Atención a Clientes</a> |
+        <a href="{{ url_for('atender_cliente') }}">Realizar otra queja</a>
+    </body>
+</html>
