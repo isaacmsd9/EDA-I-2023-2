@@ -128,12 +128,14 @@ def menu_clientes():
 
 @app.route('/clientes/cobrar', methods=['GET', 'POST'])
 def cobrar_productos():
+    global saldo_cuenta
     if request.method == 'POST':
         lista_productos = request.form.getlist('productos')
         ticket, total = cobro_productos(lista_productos)
-        return render_template('cobrar_productos.html', ticket=ticket, total=total, inventario=inventario)
+        saldo_cuenta -= total
+        return render_template('cobrar_productos.html', ticket=ticket, total=total, inventario=inventario, saldo_cuenta=saldo_cuenta)
     else:
-        return render_template('cobrar_productos.html', inventario=inventario)
+        return render_template('cobrar_productos.html', inventario=inventario, saldo_cuenta=saldo_cuenta)
 
 
 @app.route('/clientes/atender', methods=['GET', 'POST'])

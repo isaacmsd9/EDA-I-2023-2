@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Cobrar Productos</title>
-    </head>
-    <body>
-        <h1>Cobrar Productos</h1>
-        <ul>
-            {% for codigo, producto in inventario.items() %}
-                <li>{{ codigo }}: {{ producto.nombre }} - {{ producto.precio }}</li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+<!doctype html>
+<title>Cobrar Productos</title>
+{% if ticket %}
+    <h1>Ticket</h1>
+    <ul>
+        {% for item in ticket %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total: {{ total }}</p>
+{% else %}
+    <h1>Cobrar Productos</h1>
+    <form action="/clientes/cobrar" method="post">
+        {% for codigo, producto in inventario.items() %}
+            <input type="checkbox" id="{{ codigo }}" name="productos" value="{{ codigo }}">
+            <label for="{{ codigo }}">{{ producto.nombre }} - {{ producto.precio }}</label>
+            <br>
+        {% endfor %}
+        <input type="submit" value="Cobrar">
+    </form>
+{% endif %}
