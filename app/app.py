@@ -116,7 +116,6 @@ def cobrar_productos():
             cuenta_bancaria = request.form['cuenta_bancaria']
             ticket = request.form.getlist('ticket')
             total = float(request.form['total'])
-            # Aquí puedes agregar código para procesar el pago utilizando la cuenta bancaria del usuario
             return render_template('pago_realizado.html', ticket=ticket, total=total, inventario=inventario, saldo_cuenta=saldo_cuenta)
         else:
             tipo = request.form['tipo']
