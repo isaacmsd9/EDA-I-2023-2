@@ -156,11 +156,11 @@ def atender_cliente():
         if codigo in inventario:
             producto = inventario[codigo]
             # Aquí puedes agregar código para almacenar la información ingresada por el usuario en una estructura de datos
-            return render_template('atender_clientes.html', producto=producto)
+            return render_template('atender_cliente.html', producto=producto)
         else:
-            return render_template('atender_clientes.html', error='Producto no encontrado. Favor de ingresar el código nuevamente.')
+            return render_template('atender_cliente.html', error='Producto no encontrado. Favor de ingresar el código nuevamente.')
     else:
-        return render_template('atender_clientes.html')
+        return render_template('atender_cliente.html')
 
 @app.route('/personal')
 def menu_personal():
