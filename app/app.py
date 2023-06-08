@@ -155,7 +155,7 @@ def atender_cliente():
             if 'mensaje' in request.form:
                 mensaje = request.form['mensaje']
                 atencion_clientes(codigo, mensaje)
-                return render_template('atender_cliente.html', producto=producto, mensaje='Gracias por su mensaje')
+                return render_template('atender_cliente.html', producto=producto, mensaje='Queja registrada')
             else:
                 return render_template('atender_cliente.html', producto=producto)
         else:
