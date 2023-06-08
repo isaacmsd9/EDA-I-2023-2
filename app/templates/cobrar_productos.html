@@ -8,11 +8,21 @@
         {% endfor %}
     </ul>
     <p>Total: {{ total }}</p>
+    <h2>Ingrese su cuenta bancaria</h2>
+    <form action="/clientes/cobrar" method="post">
+        <input type="hidden" name="ticket" value="{{ ticket }}">
+        <input type="hidden" name="total" value="{{ total }}">
+        <label for="cuenta_bancaria">Cuenta bancaria:</label><br>
+        <input type="text" id="cuenta_bancaria" name="cuenta_bancaria">
+        <br>
+        <input type="submit" value="Pagar">
+    </form>
+{% else %}
+    <h1>Cobrar Productos</h1>
+    <form action="/clientes/cobrar" method="post">
+        <label for="productos">Códigos de productos (separados por comas):</label><br>
+        <input type="text" id="productos" name="productos">
+        <br>
+        <input type="submit" value="Cobrar">
+    </form>
 {% endif %}
-<h1>Cobrar Productos</h1>
-<form action="/clientes/cobrar" method="post">
-    <label for="productos">Códigos de productos (separados por comas):</label><br>
-    <input type="text" id="productos" name="productos">
-    <br>
-    <input type="submit" value="Cobrar">
-</form>

@@ -130,11 +130,18 @@ def menu_clientes():
 def cobrar_productos():
     global saldo_cuenta
     if request.method == 'POST':
-        codigos_productos = request.form['productos']
-        lista_productos = codigos_productos.split(',')
-        ticket, total = cobro_productos(lista_productos)
-        saldo_cuenta -= total
-        return render_template('cobrar_productos.html', ticket=ticket, total=total, inventario=inventario, saldo_cuenta=saldo_cuenta)
+        if 'cuenta_bancaria' in request.form:
+            cuenta_bancaria = request.form['cuenta_bancaria']
+            ticket = request.form.getlist('ticket')
+            total = float(request.form['total'])
+            # Aquí puedes agregar código para procesar el pago utilizando la cuenta bancaria del usuario
+            return render_template('pago_realizado.html', ticket=ticket, total=total, inventario=inventario, saldo_cuenta=saldo_cuenta)
+        else:
+            codigos_productos = request.form['productos']
+            lista_productos = codigos_productos.split(',')
+            ticket, total = cobro_productos(lista_productos)
+            saldo_cuenta -= total
+            return render_template('cobrar_productos.html', ticket=ticket, total=total, inventario=inventario, saldo_cuenta=saldo_cuenta)
     else:
         return render_template('cobrar_productos.html', inventario=inventario, saldo_cuenta=saldo_cuenta)
 
