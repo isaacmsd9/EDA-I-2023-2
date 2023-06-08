@@ -168,7 +168,7 @@ def baja_personal():
         return render_template('baja_personal.html')
 
 @app.route('/personal/cambio_puesto', methods=['GET', 'POST'])
-def cambio_puesto_view():
+def cambio_puesto():
     if request.method == 'POST':
         codigo = request.form['codigo']
         nuevo_puesto = request.form['nuevo_puesto']
