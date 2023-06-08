@@ -123,7 +123,7 @@ def menu_clientes():
         return render_template('menu_clientes.html')
 
 @app.route('/cobro_productos', methods=['POST'])
-def cobro_productos_route():
+def cobro_productos():
     lista_productos = request.form.getlist('productos')
     
     global saldo_cuenta
