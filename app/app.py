@@ -100,7 +100,7 @@ def agregar_suministros_view():
         return render_template('agregar_suministro.html')
 
 @app.route('/inventario/quitar', methods=['GET', 'POST'])
-def quitar_suministros():
+def quitar_suministros_view():
     if request.method == 'POST':
         codigo = request.form['codigo']
         quitar_suministros(codigo)
@@ -109,7 +109,7 @@ def quitar_suministros():
         return render_template('quitar_suministros.html')
 
 @app.route('/inventario/ordenar', methods=['GET', 'POST'])
-def ordenar_suministros():
+def ordenar_suministros_view():
     if request.method == 'POST':
         criterio = request.form['criterio']
         ordenados = ordenar_suministros(criterio)
