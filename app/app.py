@@ -11,8 +11,7 @@ trabajadores = {}
 # y lo agrega al diccion
 
 def agregar_suministros(codigo, nombre, precio):
-    inventario[codigo] = {'nombre': nombre, 'precio': precio}ario de inventario con el código como clave y un diccionario con el nombre y el precio como valor
-
+    inventario[codigo] = {'nombre': nombre, 'precio': precio}
 
 # La función quitar_suministros toma como argumento el código de un suministro
 # y lo elimina del diccionario de inventario utilizando el método pop
