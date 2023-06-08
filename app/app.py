@@ -14,11 +14,12 @@ def agregar_suministros(codigo, nombre, precio):
 
 # La función quitar_suministros toma como argumento el código de un suministro
 # y lo elimina del diccionario de inventario utilizando el método pop
-def quitar_suministros(codigo, nombre):
-    if codigo in inventario:
-        inventario.pop(codigo)
-        return True
-    else:
+def quitar_suministros(codigo=None, nombre=None):
+    if codigo:
+        if codigo in inventario:
+            inventario.pop(codigo)
+            return True
+    elif nombre:
         for codigo_producto, producto in inventario.items():
             if producto['nombre'] == nombre:
                 inventario.pop(codigo_producto)
