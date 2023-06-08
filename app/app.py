@@ -1,7 +1,5 @@
 from flask import Flask, request, render_template, url_for, redirect
-
 app = Flask(__name__)
-
 inventario = {}
 clientes = []
 trabajadores = {}
@@ -51,16 +49,12 @@ def alta_trabajador(codigo, nombre, apellido, puesto):
 def baja_trabajador(codigo):
     if codigo in trabajadores:
         trabajadores.pop(codigo)
-        print(f"El trabajador con código {codigo} ha sido dado de baja.")
-    else:
-        print(f"No se encontró un trabajador con código {codigo}.")
 
 def cambio_puesto(codigo, nuevo_puesto):
     if codigo in trabajadores:
         trabajadores[codigo]['puesto'] = nuevo_puesto
         return True
     else:
-        print(f"No se encontró un trabajador con código {codigo}.")
         return False
 
 @app.route('/')
@@ -93,8 +87,6 @@ def quitar_suministros_view():
     if request.method == 'POST':
         codigo = request.form['codigo']
         quitar_suministros(codigo)
-
-
         return render_template('quitar_suministros.html', mensaje='Suministro quitado')
     else:
         return render_template('quitar_suministros.html', mensaje='Suministro no encontrado')
