@@ -88,6 +88,10 @@ def menu_inventario():
     # Muestra el menú de administración de inventario
     return render_template('menu_inventario.html')
 
+@app.route('/inventario/mostrar')
+def mostrar_inventario():
+    return render_template('mostrar_inventario.html', inventario=inventario)
+
 @app.route('/inventario/agregar', methods=['GET', 'POST'])
 def agregar_suministros_view():
     if request.method == 'POST':
