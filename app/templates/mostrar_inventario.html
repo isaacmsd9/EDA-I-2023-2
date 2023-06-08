@@ -1,0 +1,17 @@
+<!doctype html>
+<title>Inventario</title>
+<h1>Inventario</h1>
+<table>
+    <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+    </tr>
+    {% for codigo, producto in inventario.items() %}
+        <tr>
+            <td>{{ codigo }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precio }}</td>
+        </tr>
+    {% endfor %}
+</table>
