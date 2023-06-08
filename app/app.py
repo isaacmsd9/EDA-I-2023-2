@@ -93,9 +93,11 @@ def quitar_suministros_view():
     if request.method == 'POST':
         codigo = request.form['codigo']
         quitar_suministros(codigo)
-        return redirect(url_for('menu_inventario'))
+
+
+        return render_template('quitar_suministros.html', mensaje='Suministro quitado')
     else:
-        return render_template('quitar_suministros.html')
+        return render_template('quitar_suministros.html', mensaje='Suministro no encontrado')
 
 @app.route('/inventario/ordenar', methods=['GET', 'POST'])
 def ordenar_suministros_view():
