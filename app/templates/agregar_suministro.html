@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Agregar Suministros</title>
-    </head>
-    <body>
-        <h1>Agregar Suministros</h1>
-        <form action="{{ url_for('agregar_suministros') }}" method="post">
-            <label for="codigo">Código del suministro:</label>
-            <input type="text" id="codigo" name="codigo">
-            <br>
-            <label for="nombre">Nombre del suministro:</label>
-            <input type="text" id="nombre" name="nombre">
-            <br>
-            <label for="cantidad">Cantidad a agregar:</label>
-            <input type="number" id="cantidad" name="cantidad">
-            <br>
-            <input type="submit" value="Agregar">
-        </form>
-    </body>
-</html>
+<!doctype html>
+<title>Agregar Suministros</title>
+{% if success %}
+    <p>Suministro agregado con éxito.</p>
+{% else %}
+    <form action="/inventario/agregar" method="post">
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo">
+        <br>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <br>
+        <label for="precio">Precio:</label>
+        <input type="number" step="0.01" id="precio" name="precio">
+        <br>
+        <input type="submit" value="Agregar">
+    </form>
+{% endif %}
