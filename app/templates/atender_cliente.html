@@ -10,9 +10,9 @@
         {% elif producto %}
             <h2>{{ producto.nombre }}</h2>
             {% if mensaje %}
-                <p>{{ mensaje }}</p>
-                <a href="{{ url_for('menu_clientes') }}">Volver al menú de Atención a Clientes</a> |
-                <a href="{{ url_for('atender_cliente') }}">Realizar otra queja</a>
+                <p>Queja registrada</p>
+                <a href="{{ url_for('atender_cliente') }}">Ingresar otro código</a> |
+                <a href="{{ url_for('menu_clientes') }}">Volver al menú de Atención a Clientes</a>
             {% else %}
                 <form method="post">
                     <input type="hidden" name="codigo" value="{{ codigo }}">
