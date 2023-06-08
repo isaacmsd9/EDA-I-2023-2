@@ -104,9 +104,9 @@ def quitar_suministros():
     if request.method == 'POST':
         codigo = request.form['codigo']
         quitar_suministros(codigo)
-        return render_template('quitar_suministro.html', success=True)
+        return render_template('quitar_suministros.html', success=True)
     else:
-        return render_template('quitar_suministro.html')
+        return render_template('quitar_suministros.html')
 
 @app.route('/inventario/ordenar', methods=['GET', 'POST'])
 def ordenar_suministros():
