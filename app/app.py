@@ -130,13 +130,13 @@ def menu_clientes():
 def cobrar_productos():
     global saldo_cuenta
     if request.method == 'POST':
-        lista_productos = request.form.getlist('productos')
+        codigos_productos = request.form['productos']
+        lista_productos = codigos_productos.split(',')
         ticket, total = cobro_productos(lista_productos)
         saldo_cuenta -= total
         return render_template('cobrar_productos.html', ticket=ticket, total=total, inventario=inventario, saldo_cuenta=saldo_cuenta)
     else:
         return render_template('cobrar_productos.html', inventario=inventario, saldo_cuenta=saldo_cuenta)
-
 
 @app.route('/clientes/atender', methods=['GET', 'POST'])
 def atender_cliente():
