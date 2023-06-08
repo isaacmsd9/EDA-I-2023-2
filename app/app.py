@@ -149,8 +149,8 @@ def cobrar_productos():
 def atender_cliente():
     if request.method == 'POST':
         codigo = request.form['codigo']
-        if codigo in inventario:
-            producto = inventario[codigo]
+        producto = inventario.get(codigo)
+        if producto:
             if 'mensaje' in request.form:
                 mensaje = request.form['mensaje']
                 atencion_clientes(codigo, mensaje)
