@@ -2,8 +2,20 @@
 <html>
     <head>
         <title>Quitar Suministros</title>
+        <script>
+            function toggleInput() {
+                var selection = document.getElementById("selection").value;
+                if (selection === "codigo") {
+                    document.getElementById("codigo-group").style.display = "block";
+                    document.getElementById("nombre-group").style.display = "none";
+                } else if (selection === "nombre") {
+                    document.getElementById("codigo-group").style.display = "none";
+                    document.getElementById("nombre-group").style.display = "block";
+                }
+            }
+        </script>
     </head>
-    <body>
+    <body onload="toggleInput()">
         <h1>Quitar Suministros</h1>
         {% if success %}
             <p>Suministro quitado con éxito</p>
@@ -11,10 +23,19 @@
             <p>Suministro no encontrado</p>
         {% endif %}
         <form action="{{ url_for('quitar_suministro') }}" method="post">
-            <label for="codigo">Código:</label>
-            <input type="text" id="codigo" name="codigo"><br>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre"><br>
+            <label for="selection">Quitar por:</label>
+            <select id="selection" name="selection" onchange="toggleInput()">
+                <option value="codigo">Código</option>
+                <option value="nombre">Nombre</option>
+            </select><br>
+            <div id="codigo-group">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo"><br>
+            </div>
+            <div id="nombre-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre"><br>
+            </div>
             <input type="submit" value="Quitar">
             <a href="{{ url_for('menu_inventario') }}"><button type="button">Regresar al Inventario</button></a>
         </form>
