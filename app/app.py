@@ -159,7 +159,7 @@ def atender_cliente():
             else:
                 return render_template('atender_cliente.html', producto=producto, mensaje='Queja registrada')
         else:
-            return render_template('atender_cliente.html', error='Producto no encontrado. Favor de ingresar el código correcto')
+            return render_template('atender_cliente.html')
     else:
         return render_template('atender_cliente.html')
 
