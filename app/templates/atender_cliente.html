@@ -18,6 +18,10 @@
             </form>
             {% if mensaje %}
                 <p>{{ mensaje }}</p>
+                {% if mostrar_botones %}
+                    <button onclick="location.href='/clientes/atender'">Volver al menú atender clientes</button>
+                    <button onclick="location.href='/clientes/ingresar_queja'">Ingresar otra queja</button>
+                {% endif %}
             {% endif %}
         {% else %}
             <form method="post">
