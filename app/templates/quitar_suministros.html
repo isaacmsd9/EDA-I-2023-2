@@ -1,14 +1,18 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>Quitar suministros</h1>
-    {% if mensaje %}
-        <p>{{ mensaje }}</p>
-    {% endif %}
-    <form method="post">
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo">
-        <input type="submit" value="Quitar">
-    </form>
-    <a href="{{ url_for('menu_inventario') }}">Volver al menú del inventario</a>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quitar suministros</title>
+    </head>
+    <body>
+        <h1>Quitar suministros</h1>
+        {% if mensaje %}
+            <p>{{ mensaje }}</p>
+        {% endif %}
+        <form method="post">
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo" name="codigo">
+            <input type="submit" value="Quitar">
+        </form>
+        <a href="{{ url_for('menu_inventario') }}">Volver al menú del inventario</a>
+    </body>
+</html>
