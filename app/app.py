@@ -89,7 +89,7 @@ def menu_inventario():
     return render_template('menu_inventario.html')
 
 @app.route('/inventario/agregar', methods=['GET', 'POST'])
-def agregar_suministros():
+def agregar_suministros_view():
     if request.method == 'POST':
         codigo = request.form['codigo']
         nombre = request.form['nombre']
