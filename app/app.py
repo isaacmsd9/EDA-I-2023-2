@@ -80,119 +80,102 @@ def cambio_puesto(codigo, nuevo_puesto):
 
 @app.route('/')
 def menu():
+    # Muestra el menú principal
     return render_template('menu.html')
 
 @app.route('/inventario')
 def menu_inventario():
+    # Muestra el menú de administración de inventario
     return render_template('menu_inventario.html')
 
-@app.route('/agregar_suministros', methods=['POST'])
-def agregar_suministros():
-    codigo = request.form['codigo']
-    nombre = request.form['nombre']
-    precio = float(request.form['precio'])
-    
-    agregar_suministros(codigo, nombre, precio)
-    
-    return f'Suministro agregado: {codigo} - {nombre} - ${precio}'
-
-@app.route('/quitar_suministros', methods=['GET', 'POST'])
-def quitar_suministros():
-    busqueda = request.form['busqueda']
-    
-    if quitar_suministros(busqueda):
-        return 'Suministro quitado'
+@app.route('/inventario/agregar', methods=['GET', 'POST'])
+def agregar_suministro():
+    if request.method == 'POST':
+        codigo = request.form['codigo']
+        nombre = request.form['nombre']
+        precio = float(request.form['precio'])
+        agregar_suministros(codigo, nombre, precio)
+        return render_template('agregar_suministro.html', success=True)
     else:
-        return 'Suministro no encontrado'
+        return render_template('agregar_suministro.html')
 
-@app.route('/ordenar_suministros', methods=['GET', 'POST'])
-def ordenar_suministros():
-    criterio = request.form['criterio']
-    
-    ordenados = ordenar_suministros(criterio)
-    
-    resultado = ''
-    
-    for codigo, producto in ordenados:
-        resultado += f'{codigo} - {producto["nombre"]} - ${producto["precio"]}<br>'
-    
-    return resultado
+@app.route('/inventario/quitar', methods=['GET', 'POST'])
+def quitar_suministro():
+    if request.method == 'POST':
+        codigo = request.form['codigo']
+        quitar_suministros(codigo)
+        return render_template('quitar_suministro.html', success=True)
+    else:
+        return render_template('quitar_suministro.html')
+
+@app.route('/inventario/ordenar', methods=['GET', 'POST'])
+def ordenar_suministros_view():
+    if request.method == 'POST':
+        criterio = request.form['criterio']
+        ordenados = ordenar_suministros(criterio)
+        return render_template('ordenar_suministros.html', ordenados=ordenados)
+    else:
+        return render_template('ordenar_suministros.html')
 
 @app.route('/clientes')
 def menu_clientes():
-        return render_template('menu_clientes.html')
+    # Muestra el menú de atención a clientes
+    return render_template('menu_clientes.html')
 
-@app.route('/cobro_productos', methods=['GET', 'POST'])
-def cobro_productos():
-    lista_productos = request.form.getlist('productos')
-    
-    global saldo_cuenta
-    total = 0
-    ticket = []
-    for busqueda in lista_productos:
-        codigo = buscar_producto(busqueda)
-        if codigo:
-            total += inventario[codigo]['precio']
-            ticket.append(f"{codigo} - {inventario[codigo]['nombre']} - ${inventario[codigo]['precio']}")
-        else:
-            print(f"Producto no encontrado: {busqueda}")
-    
-    resultado = "Ticket de pago:<br>"
-    resultado += "<br>".join(ticket)
-    resultado += f"<br><br>Total: ${total}<br>"
-    
-    if total <= saldo_cuenta:
-        cuenta_bancaria = request.form['cuenta_bancaria']
-        saldo_cuenta -= total
-        
-        resultado += f"<br>Se ha realizado el cobro a la cuenta {cuenta_bancaria}<br>"
-        resultado += f"Saldo restante en la cuenta: ${saldo_cuenta}<br>"
+@app.route('/clientes/cobrar', methods=['GET', 'POST'])
+def cobrar_productos():
+    if request.method == 'POST':
+        lista_productos = request.form.getlist('productos')
+        ticket, total = cobro_productos(lista_productos)
+        return render_template('cobrar_productos.html', ticket=ticket, total=total)
     else:
-        resultado += "No hay suficiente saldo en la cuenta para realizar el pago<br>"
-    
-    return resultado
+        return render_template('cobrar_productos.html')
 
 @app.route('/clientes/atender', methods=['GET', 'POST'])
-def atencion_clientes():
-    codigo_producto = request.form['codigo_producto']
-    mensaje = request.form['mensaje']
-    
-    atencion_clientes(codigo_producto, mensaje)
-    
-    return 'Queja registrada'
+def atender_cliente():
+    if request.method == 'POST':
+        codigo_producto = request.form['codigo_producto']
+        mensaje = request.form['mensaje']
+        atencion_clientes(codigo_producto, mensaje)
+        return render_template('atender_cliente.html', success=True)
+    else:
+        return render_template('atender_cliente.html')
 
 @app.route('/personal')
 def menu_personal():
+    # Muestra el menú de administración de personal
     return render_template('menu_personal.html')
 
-@app.route('/alta_trabajador', methods=['GET', 'POST'])
-def alta_trabajador():
-    codigo = request.form['codigo']
-    nombre = request.form['nombre']
-    apellido = request.form['apellido']
-    puesto = request.form['puesto']
+@app.route('/personal/alta', methods=['GET', 'POST'])
+def alta_personal():
+    if request.method == 'POST':
+        codigo = request.form['codigo']
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        puesto = request.form['puesto']
+        alta_trabajador(codigo, nombre, apellido, puesto)
+        return render_template('alta_personal.html', success=True)
+    else:
+        return render_template('alta_personal.html')
 
-    alta_trabajador(codigo, nombre, apellido, puesto)
+@app.route('/personal/baja', methods=['GET', 'POST'])
+def baja_personal():
+    if request.method == 'POST':
+        codigo = request.form['codigo']
+        baja_trabajador(codigo)
+        return render_template('baja_personal.html', success=True)
+    else:
+        return render_template('baja_personal.html')
 
-    return 'Trabajador dado de alta'
+@app.route('/personal/cambio_puesto', methods=['GET', 'POST'])
+def cambio_puesto_view():
+    if request.method == 'POST':
+        codigo = request.form['codigo']
+        nuevo_puesto = request.form['nuevo_puesto']
+        cambio_puesto(codigo, nuevo_puesto)
+        return render_template('cambio_puesto.html', success=True)
+    else:
+        return render_template('cambio_puesto.html')
 
-@app.route('/baja_trabajador', methods=['GET', 'POST'])
-def baja_trabajador():
-    codigo = request.form['codigo']
-
-    baja_trabajador(codigo)
-
-    return 'Trabajador dado de baja'
-
-@app.route('/cambio_puesto', methods=['GET', 'POST'])
-def cambio_puesto():
-    codigo = request.form['codigo']
-    nuevo_puesto = request.form['nuevo_puesto']
-
-    cambio_realizado = cambio_puesto(codigo, nuevo_puesto)
-
-    if cambio_realizado:
-        return 'Cambio realizado'
-    
 if __name__ == '__main__':
     app.run()
