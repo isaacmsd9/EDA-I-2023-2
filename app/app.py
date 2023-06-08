@@ -61,25 +61,20 @@ saldo_cuenta = 1000
 # e imprime un ticket con el detalle del cobro y realiza el cobro si hay suficiente saldo en la cuenta bancaria del cliente
 def cobro_productos(lista_productos):
     global saldo_cuenta
+    
     total = 0
     ticket = []
+    
     for busqueda in lista_productos:
         codigo = buscar_producto(busqueda)
+        
         if codigo:
             total += inventario[codigo]['precio']
             ticket.append(f"{codigo} - {inventario[codigo]['nombre']} - ${inventario[codigo]['precio']}")
         else:
-            print(f"Producto no encontrado: {busqueda}")
-    print("\nTicket de pago:")
-    print("\n".join(ticket))
-    print(f"\nTotal: ${total}\n")
-    if total <= saldo_cuenta:
-        cuenta_bancaria = input("Ingresa tu cuenta bancaria para realizar el pago: ")
-        saldo_cuenta -= total
-        print(f"\nSe ha realizado el cobro a la cuenta {cuenta_bancaria}\n")
-        print(f"Saldo restante en la cuenta: ${saldo_cuenta}\n")
-    else:
-        print("No hay suficiente saldo en la cuenta para realizar el pago\n")
+            ticket.append(f"Producto no encontrado: {busqueda}. Favor de ingresar el código o nombre correcto.")
+    
+    return ticket, total
 
 # La función atencion_clientes toma como argumentos el código de un producto y un mensaje del cliente
 # y agrega un diccionario con esa información a la lista de clientes
