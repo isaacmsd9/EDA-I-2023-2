@@ -117,12 +117,16 @@ def agregar_suministro():
 
 @app.route('/inventario/quitar', methods=['GET', 'POST'])
 def quitar_suministro():
+    success = False
+    not_found = False
     if request.method == 'POST':
-        codigo = request.form['codigo']
-        quitar_suministros(codigo)
-        return render_template('quitar_suministro.html', success=True)
-    else:
-        return render_template('quitar_suministro.html')
+        codigo = request.form.get('codigo')
+        nombre = request.form.get('nombre')
+        if quitar_suministros(codigo, nombre):
+            success = True
+        else:
+            not_found = True
+    return render_template('quitar_suministros.html', success=success, not_found=not_found)
 
 @app.route('/inventario/ordenar', methods=['GET', 'POST'])
 def ordenar_suministros_view():
