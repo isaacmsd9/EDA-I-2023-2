@@ -1,33 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Atender Cliente</title>
+        <title>Atención a Clientes</title>
     </head>
     <body>
-        <h1>Atender Cliente</h1>
-        {% if error %}
-            <p>{{ error }}</p>
-        {% endif %}
-        {% if producto %}
-            <h2>{{ producto.nombre }}</h2>
-            <form method="post">
-                <input type="hidden" name="codigo_producto" value="{{ producto.codigo }}">
-                <label for="mensaje">Mensaje:</label><br>
-                <textarea name="mensaje" id="mensaje"></textarea><br>
-                <input type="submit" value="Enviar">
-            </form>
-            {% if mensaje %}
-                <p>{{ mensaje }}</p>
-                {% if mostrar_boton %}
-                    <button onclick="location.href='/menu_clientes'">Regresar al menú clientes</button>
-                {% endif %}
-            {% endif %}
-        {% else %}
-            <form method="post">
-                <label for="codigo_producto">Código del producto:</label><br>
-                <input type="text" name="codigo_producto" id="codigo_producto"><br>
-                <input type="submit" value="Buscar">
-            </form>
-        {% endif %}
+        <h1>Atención a Clientes</h1>
+        <h2>Registrar una queja</h2>
+        <form action="/clientes" method="get">
+            <input type="hidden" name="opcion" value="2">
+            <label for="codigo_producto">Código del producto:</label><br>
+            <input type="text" id="codigo_producto" name="codigo_producto"><br><br>
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje"></textarea><br><br>
+            <input type="submit" value="Enviar">
+        </form>
+
+        <!-- Agregar más formularios y opciones según sea necesario -->
     </body>
 </html>
