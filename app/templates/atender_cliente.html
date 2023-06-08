@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Atender cliente</title>
+        <title>Atender Cliente</title>
     </head>
     <body>
-        <h1>Atender cliente</h1>
+        <h1>Atender Cliente</h1>
         {% if error %}
-            <p>{{ error }}</p>
-            {% elif producto %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        {% if producto %}
             <h2>{{ producto.nombre }}</h2>
+            <form method="post">
+                <input type="hidden" name="codigo" value="{{ producto.codigo }}">
+                <label for="mensaje">Mensaje:</label><br>
+                <textarea name="mensaje" id="mensaje"></textarea><br>
+                <input type="submit" value="Enviar">
+            </form>
             {% if mensaje %}
-                <p>Queja registrada</p>
-                <a href="{{ url_for('atender_cliente') }}">Ingresar otro código</a> |
-                <a href="{{ url_for('menu_clientes') }}">Volver al menú de Atención a Clientes</a>
-            {% else %}        
-                <form method="post">
-                    <input type="hidden" name="codigo" value="{{ codigo }}">
-                    <label for="mensaje">Mensaje:</label><br>
-                    <textarea id="mensaje" name="mensaje"></textarea><br>
-                    <input type="submit" value="Enviar">
-                </form>
+                <p>{{ mensaje }}</p>
             {% endif %}
         {% else %}
             <form method="post">
-                <label for="codigo">Código:</label>
-                <input type="text" id="codigo" name="codigo">
+                <label for="codigo">Código del producto:</label><br>
+                <input type="text" name="codigo" id="codigo"><br>
                 <input type="submit" value="Buscar">
             </form>
         {% endif %}
