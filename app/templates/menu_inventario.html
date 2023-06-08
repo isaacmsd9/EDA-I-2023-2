@@ -12,13 +12,5 @@
             <li><a href="{{ url_for('ordenar_suministros_view') }}">Ordenar suministros</a></li>
             <li><a href="{{ url_for('menu') }}">Menu Inicial</a></li>
         </ul>
-        {% if inventario %}
-            <h2>Suministros agregados:</h2>
-            <ul>
-                {% for codigo, producto in inventario.items() %}
-                    <li>{{ codigo }} - {{ producto.nombre }} - ${{ producto.precio }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
     </body>
 </html>
