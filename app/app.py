@@ -157,9 +157,9 @@ def atender_cliente():
                 atencion_clientes(codigo, mensaje)
                 return render_template('atender_cliente.html', producto=producto)
             else:
-                return render_template('atender_cliente.html', producto=producto, mensaje='Queja registrada')
+                return render_template('atender_cliente.html', producto=producto)
         else:
-            return render_template('atender_cliente.html')
+            return render_template('atender_cliente.html', mensaje='Queja registrada'))
     else:
         return render_template('atender_cliente.html')
 
