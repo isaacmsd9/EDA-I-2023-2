@@ -5,23 +5,10 @@
     </head>
     <body>
         <h1>Cobrar Productos</h1>
-        {% if ticket %}
-            <h2>Ticket de pago:</h2>
-            <ul>
-                {% for item in ticket %}
-                    <li>{{ item }}</li>
-                {% endfor %}
-            </ul>
-            <p>Total: ${{ total }}</p>
-        {% endif %}
-        <form action="{{ url_for('cobrar_productos') }}" method="post">
-            <label for="productos">Productos:</label><br>
-            <select id="productos" name="productos" multiple>
-                {% for codigo, producto in inventario.items() %}
-                    <option value="{{ codigo }}">{{ producto.nombre }}</option>
-                {% endfor %}
-            </select><br>
-            <input type="submit" value="Cobrar">
-        </form>
+        <ul>
+            {% for codigo, producto in inventario.items() %}
+                <li>{{ codigo }}: {{ producto.nombre }} - {{ producto.precio }}</li>
+            {% endfor %}
+        </ul>
     </body>
 </html>
