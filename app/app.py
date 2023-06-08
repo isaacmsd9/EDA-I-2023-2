@@ -152,12 +152,15 @@ def cobrar_productos():
 @app.route('/clientes/atender', methods=['GET', 'POST'])
 def atender_cliente():
     if request.method == 'POST':
-        codigo_producto = request.form['codigo_producto']
-        mensaje = request.form['mensaje']
-        atencion_clientes(codigo_producto, mensaje)
-        return render_template('atender_cliente.html', success=True)
+        codigo = request.form['codigo']
+        if codigo in inventario:
+            producto = inventario[codigo]
+            # Aquí puedes agregar código para almacenar la información ingresada por el usuario en una estructura de datos
+            return render_template('atender_clientes.html', producto=producto)
+        else:
+            return render_template('atender_clientes.html', error='Producto no encontrado. Favor de ingresar el código nuevamente.')
     else:
-        return render_template('atender_cliente.html')
+        return render_template('atender_clientes.html')
 
 @app.route('/personal')
 def menu_personal():
