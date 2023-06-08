@@ -32,7 +32,6 @@ def buscar_producto(busqueda):
 saldo_cuenta = 1000
 
 def cobro_productos(lista_productos):
-    global saldo_cuenta
     total = 0
     ticket = []
     for busqueda in lista_productos:
@@ -40,21 +39,7 @@ def cobro_productos(lista_productos):
         if codigo:
             total += inventario[codigo]['precio']
             ticket.append(f"{codigo} - {inventario[codigo]['nombre']} - ${inventario[codigo]['precio']}")
-        else:
-            print(f"Producto no encontrado: {busqueda}")
-    
-    print("\nTicket de pago:")
-    print("\n".join(ticket))
-    print(f"\nTotal: ${total}\n")
-    
-    if total <= saldo_cuenta:
-        cuenta_bancaria = input("Ingresa tu cuenta bancaria para realizar el pago: ")
-        saldo_cuenta -= total
-        
-        print(f"\nSe ha realizado el cobro a la cuenta {cuenta_bancaria}\n")
-        print(f"Saldo restante en la cuenta: ${saldo_cuenta}\n")
-    else:
-        print("No hay suficiente saldo en la cuenta para realizar el pago\n")
+    return ticket, total
 
 def atencion_clientes(codigo_producto, mensaje):
     global clientes
