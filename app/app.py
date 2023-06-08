@@ -108,7 +108,7 @@ def quitar_suministros_view():
     if request.method == 'POST':
         codigo = request.form['codigo']
         quitar_suministros(codigo)
-        return render_template('quitar_suministros.html', success=True)
+        return redirect(url_for('menu_inventario'))
     else:
         return render_template('quitar_suministros.html')
 
