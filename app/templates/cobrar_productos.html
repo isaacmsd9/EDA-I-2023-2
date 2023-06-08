@@ -19,8 +19,17 @@
     </form>
 {% else %}
     <h1>Cobrar Productos</h1>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
     <form action="/clientes/cobrar" method="post">
-        <label for="productos">Códigos de productos (separados por comas):</label><br>
+        <label for="tipo">Ingresar por:</label><br>
+        <select id="tipo" name="tipo">
+            <option value="codigo">Código</option>
+            <option value="nombre">Nombre</option>
+        </select>
+        <br>
+        <label for="productos">Productos (separados por comas):</label><br>
         <input type="text" id="productos" name="productos">
         <br>
         <input type="submit" value="Cobrar">

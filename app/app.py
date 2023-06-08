@@ -137,9 +137,28 @@ def cobrar_productos():
             # Aquí puedes agregar código para procesar el pago utilizando la cuenta bancaria del usuario
             return render_template('pago_realizado.html', ticket=ticket, total=total, inventario=inventario, saldo_cuenta=saldo_cuenta)
         else:
-            codigos_productos = request.form['productos']
-            lista_productos = codigos_productos.split(',')
-            ticket, total = cobro_productos(lista_productos)
+            tipo = request.form['tipo']
+            productos = request.form['productos']
+            lista_productos = productos.split(',')
+            if tipo == 'codigo':
+                # Verificar si los códigos ingresados son válidos
+                for codigo in lista_productos:
+                    if codigo not in inventario:
+                        return render_template('cobrar_productos.html', error='Producto no encontrado. Favor de intentar nuevamente.', inventario=inventario, saldo_cuenta=saldo_cuenta)
+                ticket, total = cobro_productos(lista_productos)
+            else:
+                # Convertir los nombres ingresados a códigos
+                codigos_productos = []
+                for nombre in lista_productos:
+                    codigo_encontrado = False
+                    for codigo, producto in inventario.items():
+                        if producto.nombre == nombre:
+                            codigos_productos.append(codigo)
+                            codigo_encontrado = True
+                            break
+                    if not codigo_encontrado:
+                        return render_template('cobrar_productos.html', error='Producto no encontrado. Favor de intentar nuevamente.', inventario=inventario, saldo_cuenta=saldo_cuenta)
+                ticket, total = cobro_productos(codigos_productos)
             saldo_cuenta -= total
             return render_template('cobrar_productos.html', ticket=ticket, total=total, inventario=inventario, saldo_cuenta=saldo_cuenta)
     else:
