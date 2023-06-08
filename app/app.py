@@ -17,10 +17,13 @@ def agregar_suministros(codigo, nombre, precio):
 def quitar_suministros(codigo, nombre):
     if codigo in inventario:
         inventario.pop(codigo)
+        return True
     else:
         for codigo_producto, producto in inventario.items():
             if producto['nombre'] == nombre:
                 inventario.pop(codigo_producto)
+                return True
+    return False
 
 # La función ordenar_por_nombre toma como argumento un elemento del diccionario de inventario
 # y devuelve el valor del campo 'nombre' del diccionario asociado a ese elemento
