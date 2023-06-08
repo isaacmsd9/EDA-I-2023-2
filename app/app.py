@@ -8,9 +8,11 @@ clientes = []
 trabajadores = {}
 
 # La función agregar_suministros toma como argumentos el código, el nombre y el precio de un suministro
-# y lo agrega al diccionario de inventario con el código como clave y un diccionario con el nombre y el precio como valor
+# y lo agrega al diccion
+
 def agregar_suministros(codigo, nombre, precio):
-    inventario[codigo] = {'nombre': nombre, 'precio': precio}
+    inventario[codigo] = {'nombre': nombre, 'precio': precio}ario de inventario con el código como clave y un diccionario con el nombre y el precio como valor
+
 
 # La función quitar_suministros toma como argumento el código de un suministro
 # y lo elimina del diccionario de inventario utilizando el método pop
@@ -161,9 +163,9 @@ def cobrar_productos():
     if request.method == 'POST':
         lista_productos = request.form.getlist('productos')
         ticket, total = cobro_productos(lista_productos)
-        return render_template('cobrar_productos.html', ticket=ticket, total=total)
+        return render_template('cobrar_productos.html', ticket=ticket, total=total, inventario=inventario)
     else:
-        return render_template('cobrar_productos.html')
+        return render_template('cobrar_productos.html', inventario=inventario)
 
 @app.route('/clientes/atender', methods=['GET', 'POST'])
 def atender_cliente():

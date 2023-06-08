@@ -16,7 +16,11 @@
         {% endif %}
         <form action="{{ url_for('cobrar_productos') }}" method="post">
             <label for="productos">Productos:</label><br>
-            <textarea id="productos" name="productos"></textarea><br>
+            <select id="productos" name="productos" multiple>
+                {% for codigo, producto in inventario.items() %}
+                    <option value="{{ codigo }}">{{ producto.nombre }}</option>
+                {% endfor %}
+            </select><br>
             <input type="submit" value="Cobrar">
         </form>
     </body>
