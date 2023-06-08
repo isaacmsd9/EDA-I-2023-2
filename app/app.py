@@ -145,7 +145,22 @@ def cobrar_productos():
     else:
         return render_template('cobrar_productos.html', inventario=inventario, saldo_cuenta=saldo_cuenta)
 
-
+@app.route('/clientes/atender', methods=['GET', 'POST'])
+def atender_cliente():
+    if request.method == 'POST':
+        codigo = request.form['codigo']
+        if codigo in inventario:
+            producto = inventario[codigo]
+            if 'mensaje' in request.form:
+                mensaje = request.form['mensaje']
+                atencion_clientes(codigo, mensaje)
+                return render_template('atender_cliente.html', producto=producto, mensaje='Gracias por su mensaje')
+            else:
+                return render_template('atender_cliente.html', producto=producto)
+        else:
+            return render_template('atender_cliente.html', error='Producto no encontrado. Favor de ingresar el código correcto')
+    else:
+        return render_template('atender_cliente.html')
 
 @app.route('/personal')
 def menu_personal():
