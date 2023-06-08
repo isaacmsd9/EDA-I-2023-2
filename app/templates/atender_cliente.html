@@ -7,13 +7,13 @@
         <h1>Atender cliente</h1>
         {% if error %}
             <p>{{ error }}</p>
-        {% elif producto %}
+            {% elif producto %}
             <h2>{{ producto.nombre }}</h2>
             {% if mensaje %}
                 <p>Queja registrada</p>
                 <a href="{{ url_for('atender_cliente') }}">Ingresar otro código</a> |
                 <a href="{{ url_for('menu_clientes') }}">Volver al menú de Atención a Clientes</a>
-            {% else %}
+            {% else %}        
                 <form method="post">
                     <input type="hidden" name="codigo" value="{{ codigo }}">
                     <label for="mensaje">Mensaje:</label><br>
