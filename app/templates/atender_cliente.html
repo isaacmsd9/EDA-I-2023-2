@@ -14,3 +14,19 @@
                 <a href="{{ url_for('menu_clientes') }}">Volver al menú de Atención a Clientes</a> |
                 <a href="{{ url_for('atender_cliente') }}">Realizar otra queja</a>
             {% else %}
+                <form method="post">
+                    <input type="hidden" name="codigo" value="{{ codigo }}">
+                    <label for="mensaje">Mensaje:</label><br>
+                    <textarea id="mensaje" name="mensaje"></textarea><br>
+                    <input type="submit" value="Enviar">
+                </form>
+            {% endif %}
+        {% else %}
+            <form method="post">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo">
+                <input type="submit" value="Buscar">
+            </form>
+        {% endif %}
+    </body>
+</html>
