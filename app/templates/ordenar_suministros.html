@@ -12,6 +12,7 @@
                 <option value="codigo">Código</option>
             </select><br>
             <input type="submit" value="Ordenar">
+            <a href="{{ url_for('inventario_view') }}"><button type="button">Regresar al Inventario</button></a>
         </form>
         {% if ordenados %}
             <h2>Suministros ordenados:</h2>
