@@ -96,7 +96,7 @@ def agregar_suministros_route():
     
     return f'Suministro agregado: {codigo} - {nombre} - ${precio}'
 
-@app.route('/quitar_suministros', methods=['POST'])
+@app.route('/quitar_suministros', methods=['GET', 'POST'])
 def quitar_suministros_route():
     busqueda = request.form['busqueda']
     
@@ -105,7 +105,7 @@ def quitar_suministros_route():
     else:
         return 'Suministro no encontrado'
 
-@app.route('/ordenar_suministros', methods=['POST'])
+@app.route('/ordenar_suministros', methods=['GET', 'POST'])
 def ordenar_suministros_route():
     criterio = request.form['criterio']
     
@@ -122,8 +122,8 @@ def ordenar_suministros_route():
 def menu_clientes():
         return render_template('menu_clientes.html')
 
-@app.route('/cobro_productos', methods=['POST'])
-def cobro_productos():
+@app.route('/cobro_productos', methods=['GET', 'POST'])
+def cobro_productos_route():
     lista_productos = request.form.getlist('productos')
     
     global saldo_cuenta
@@ -152,7 +152,7 @@ def cobro_productos():
     
     return resultado
 
-@app.route('/atencion_clientes', methods=['POST'])
+@app.route('/clientes/atender', methods=['GET', 'POST'])
 def atencion_clientes_route():
     codigo_producto = request.form['codigo_producto']
     mensaje = request.form['mensaje']
@@ -165,7 +165,7 @@ def atencion_clientes_route():
 def menu_personal():
     return render_template('menu_personal.html')
 
-@app.route('/alta_trabajador', methods=['POST'])
+@app.route('/alta_trabajador', methods=['GET', 'POST'])
 def alta_trabajador_route():
     codigo = request.form['codigo']
     nombre = request.form['nombre']
@@ -176,7 +176,7 @@ def alta_trabajador_route():
 
     return 'Trabajador dado de alta'
 
-@app.route('/baja_trabajador', methods=['POST'])
+@app.route('/baja_trabajador', methods=['GET', 'POST'])
 def baja_trabajador_route():
     codigo = request.form['codigo']
 
@@ -184,7 +184,7 @@ def baja_trabajador_route():
 
     return 'Trabajador dado de baja'
 
-@app.route('/cambio_puesto', methods=['POST'])
+@app.route('/cambio_puesto', methods=['GET', 'POST'])
 def cambio_puesto_route():
     codigo = request.form['codigo']
     nuevo_puesto = request.form['nuevo_puesto']
