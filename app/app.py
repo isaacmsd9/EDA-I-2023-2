@@ -87,7 +87,7 @@ def menu_inventario():
     return render_template('menu_inventario.html')
 
 @app.route('/agregar_suministros', methods=['POST'])
-def agregar_suministros_route():
+def agregar_suministros():
     codigo = request.form['codigo']
     nombre = request.form['nombre']
     precio = float(request.form['precio'])
@@ -97,7 +97,7 @@ def agregar_suministros_route():
     return f'Suministro agregado: {codigo} - {nombre} - ${precio}'
 
 @app.route('/quitar_suministros', methods=['GET', 'POST'])
-def quitar_suministros_route():
+def quitar_suministros():
     busqueda = request.form['busqueda']
     
     if quitar_suministros(busqueda):
@@ -106,7 +106,7 @@ def quitar_suministros_route():
         return 'Suministro no encontrado'
 
 @app.route('/ordenar_suministros', methods=['GET', 'POST'])
-def ordenar_suministros_route():
+def ordenar_suministros():
     criterio = request.form['criterio']
     
     ordenados = ordenar_suministros(criterio)
@@ -123,7 +123,7 @@ def menu_clientes():
         return render_template('menu_clientes.html')
 
 @app.route('/cobro_productos', methods=['GET', 'POST'])
-def cobro_productos_route():
+def cobro_productos():
     lista_productos = request.form.getlist('productos')
     
     global saldo_cuenta
@@ -153,7 +153,7 @@ def cobro_productos_route():
     return resultado
 
 @app.route('/clientes/atender', methods=['GET', 'POST'])
-def atencion_clientes_route():
+def atencion_clientes():
     codigo_producto = request.form['codigo_producto']
     mensaje = request.form['mensaje']
     
@@ -166,7 +166,7 @@ def menu_personal():
     return render_template('menu_personal.html')
 
 @app.route('/alta_trabajador', methods=['GET', 'POST'])
-def alta_trabajador_route():
+def alta_trabajador():
     codigo = request.form['codigo']
     nombre = request.form['nombre']
     apellido = request.form['apellido']
@@ -177,7 +177,7 @@ def alta_trabajador_route():
     return 'Trabajador dado de alta'
 
 @app.route('/baja_trabajador', methods=['GET', 'POST'])
-def baja_trabajador_route():
+def baja_trabajador():
     codigo = request.form['codigo']
 
     baja_trabajador(codigo)
@@ -185,7 +185,7 @@ def baja_trabajador_route():
     return 'Trabajador dado de baja'
 
 @app.route('/cambio_puesto', methods=['GET', 'POST'])
-def cambio_puesto_route():
+def cambio_puesto():
     codigo = request.form['codigo']
     nuevo_puesto = request.form['nuevo_puesto']
 
