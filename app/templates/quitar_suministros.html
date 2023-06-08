@@ -7,10 +7,14 @@
         <h1>Quitar Suministros</h1>
         {% if success %}
             <p>Suministro quitado con éxito</p>
+        {% elif not_found %}
+            <p>Suministro no encontrado</p>
         {% endif %}
         <form action="{{ url_for('quitar_suministro') }}" method="post">
             <label for="codigo">Código:</label>
             <input type="text" id="codigo" name="codigo"><br>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre"><br>
             <input type="submit" value="Quitar">
             <a href="{{ url_for('menu_inventario') }}"><button type="button">Regresar al Inventario</button></a>
         </form>
