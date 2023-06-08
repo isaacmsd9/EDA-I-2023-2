@@ -12,6 +12,8 @@
             <p>Precio: ${{ producto.precio }}</p>
             {% if mensaje %}
                 <p>{{ mensaje }}</p>
+                <a href="{{ url_for('menu_clientes') }}">Volver al menú de Atención a Clientes</a> |
+                <a href="{{ url_for('atender_cliente') }}">Realizar otra queja</a>
             {% else %}
                 <form method="post">
                     <input type="hidden" name="codigo" value="{{ codigo }}">
@@ -27,7 +29,5 @@
                 <input type="submit" value="Buscar">
             </form>
         {% endif %}
-        <a href="{{ url_for('menu_clientes') }}">Volver al menú de Atención a Clientes</a> |
-        <a href="{{ url_for('atender_cliente') }}">Realizar otra queja</a>
     </body>
 </html>
