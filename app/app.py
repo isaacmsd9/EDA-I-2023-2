@@ -153,11 +153,11 @@ def atender_cliente():
         if producto:
             mensaje = request.form['mensaje']
             atencion_clientes(codigo_producto, mensaje)
-            return render_template('clientes.html', producto=producto, mensaje='Queja registrada', mostrar_boton=True)
+            return render_template('atender_clientes.html', producto=producto, mensaje='Queja registrada', mostrar_boton=True)
         else:
-            return render_template('clientes.html', error='Producto no encontrado. Favor de ingresar uno válido.')
+            return render_template('atender_clientes.html', error='Producto no encontrado. Favor de ingresar uno válido.')
     else:
-        return render_template('clientes.html')
+        return render_template('atender_clientes.html')
 
 @app.route('/personal')
 def menu_personal():
