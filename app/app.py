@@ -203,4 +203,4 @@ def cambio_puesto():
         return render_template('cambio_puesto.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, port = 5000)
