@@ -145,19 +145,16 @@ def cobrar_productos():
     else:
         return render_template('cobrar_productos.html', inventario=inventario, saldo_cuenta=saldo_cuenta)
 
-opcion = request.args.get('opcion')
+@app.route('/atender_cliente')
+def atender_cliente():
+    codigo_producto = request.args.get('codigo_producto')
+    mensaje = request.args.get('mensaje')
     
-    if opcion == '2':
-        codigo_producto = request.args.get('codigo_producto')
-        mensaje = request.args.get('mensaje')
-        
-        if buscar_producto(codigo_producto):
-            atencion_clientes(codigo_producto, mensaje)
-            return 'Queja registrada'
-        else:
-            return 'Producto no encontrado. Favor de ingresar un producto válido.'
-    
-    return render_template('atender_cliente.html')
+    if buscar_producto(codigo_producto):
+        atencion_clientes(codigo_producto, mensaje)
+        return 'Queja registrada'
+    else:
+        return 'Producto no encontrado. Favor de ingresar un producto válido.'
 
 @app.route('/personal')
 def menu_personal():
