@@ -79,7 +79,7 @@ def agregar_suministros_view():
         nombre = request.form['nombre']
         precio = float(request.form['precio'])
         agregar_suministros(codigo, nombre, precio)
-        return redirect(url_for('menu_inventario'))
+        return render_template('agregar_suministro.html', mensaje=f'Producto agregado: {codigo} - {nombre} - ${precio}')
     else:
         return render_template('agregar_suministro.html')
 
