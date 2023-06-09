@@ -146,7 +146,7 @@ def cobrar_productos():
         return render_template('cobrar_productos.html', inventario=inventario, saldo_cuenta=saldo_cuenta)
 
 @app.route('/clientes')
-def menu_clientes():
+def atender_cliente():
     opcion = request.args.get('opcion')
     
     if opcion == '2':
