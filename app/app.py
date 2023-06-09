@@ -178,16 +178,16 @@ def alta_personal():
 
 @app.route('/personal/baja')
 def baja_personal():
-    codigo = request.args.get('codigo')
-    nombre = request.args.get('nombre')
+    tipo = request.args.get('tipo')
+    valor = request.args.get('valor')
     
-    if codigo:
-        if baja_trabajador(codigo):
+    if tipo == 'codigo':
+        if baja_trabajador(valor):
             return render_template('baja_personal.html', mensaje='Trabajador dado de baja')
         else:
             return render_template('baja_personal.html', mensaje='Trabajador no encontrado')
-    elif nombre:
-        codigo_encontrado = buscar_trabajador_por_nombre(nombre)
+    elif tipo == 'nombre':
+        codigo_encontrado = buscar_trabajador_por_nombre(valor)
         if codigo_encontrado and baja_trabajador(codigo_encontrado):
             return render_template('baja_personal.html', mensaje='Trabajador dado de baja')
         else:
