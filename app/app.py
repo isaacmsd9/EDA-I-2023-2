@@ -79,9 +79,9 @@ def agregar_suministros_view():
         nombre = request.form['nombre']
         precio = float(request.form['precio'])
         agregar_suministros(codigo, nombre, precio)
-        return render_template('agregar_suministro.html', mensaje=f'Producto agregado: {codigo} - {nombre} - ${precio}')
+        return render_template('agregar_suministro.html', mensaje=f'Producto agregado: {codigo} - {nombre} - ${precio}', inventario=inventario)
     else:
-        return render_template('agregar_suministro.html')
+        return render_template('agregar_suministro.html', inventario=inventario)
 
 @app.route('/inventario/quitar', methods=['GET', 'POST'])
 def quitar_suministros_view():
