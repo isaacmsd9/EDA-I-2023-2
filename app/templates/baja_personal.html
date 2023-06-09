@@ -6,10 +6,13 @@
     <body>
         <h1>Baja de Personal</h1>
         <form action="/personal/baja" method="get">
-            <label for="codigo">Código:</label><br>
-            <input type="text" id="codigo" name="codigo"><br><br>
-            <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre"><br><br>
+            <label for="tipo">Buscar por:</label><br>
+            <select id="tipo" name="tipo">
+                <option value="codigo">Código</option>
+                <option value="nombre">Nombre</option>
+            </select><br><br>
+            <label for="valor">Valor:</label><br>
+            <input type="text" id="valor" name="valor"><br><br>
             <input type="submit" value="Dar de baja">
         </form>
 
