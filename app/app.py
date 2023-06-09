@@ -176,14 +176,24 @@ def alta_personal():
     else:
         return render_template('alta_personal.html')
 
-@app.route('/personal/baja', methods=['GET', 'POST'])
+@app.route('/personal/baja')
 def baja_personal():
-    if request.method == 'POST':
-        codigo = request.form['codigo']
-        baja_trabajador(codigo)
-        return render_template('baja_personal.html', success=True)
-    else:
-        return render_template('baja_personal.html')
+    codigo = request.args.get('codigo')
+    nombre = request.args.get('nombre')
+    
+    if codigo:
+        if baja_trabajador(codigo):
+            return render_template('baja_personal.html', mensaje='Trabajador dado de baja')
+        else:
+            return render_template('baja_personal.html', mensaje='Trabajador no encontrado')
+    elif nombre:
+        codigo_encontrado = buscar_trabajador_por_nombre(nombre)
+        if codigo_encontrado and baja_trabajador(codigo_encontrado):
+            return render_template('baja_personal.html', mensaje='Trabajador dado de baja')
+        else:
+            return render_template('baja_personal.html', mensaje='Trabajador no encontrado')
+    
+    return render_template('baja_personal.html')
 
 @app.route('/personal/cambio_puesto', methods=['GET', 'POST'])
 def cambio_puesto():
