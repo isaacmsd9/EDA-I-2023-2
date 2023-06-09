@@ -50,6 +50,8 @@ def alta_trabajador(codigo, nombre, apellido, puesto):
 def baja_trabajador(codigo):
     if codigo in trabajadores:
         trabajadores.pop(codigo)
+        return True
+    return False
 
 def cambio_puesto(codigo, nuevo_puesto):
     if codigo in trabajadores:
@@ -176,24 +178,16 @@ def alta_personal():
     else:
         return render_template('alta_personal.html')
 
-@app.route('/personal/baja')
+@app.route('/personal/baja', methods=['GET', 'POST'])
 def baja_personal():
-    tipo = request.args.get('tipo')
-    valor = request.args.get('valor')
-    
-    if tipo == 'codigo':
-        if baja_trabajador(valor):
+    if request.method == 'POST':
+        codigo = request.form['codigo']
+        if baja_trabajador(codigo):
             return render_template('baja_personal.html', mensaje='Trabajador dado de baja')
         else:
             return render_template('baja_personal.html', mensaje='Trabajador no encontrado')
-    elif tipo == 'nombre':
-        codigo_encontrado = buscar_trabajador_por_nombre(valor)
-        if codigo_encontrado and baja_trabajador(codigo_encontrado):
-            return render_template('baja_personal.html', mensaje='Trabajador dado de baja')
-        else:
-            return render_template('baja_personal.html', mensaje='Trabajador no encontrado')
-    
-    return render_template('baja_personal.html')
+    else:
+        return render_template('baja_personal.html')
 
 @app.route('/personal/cambio_puesto', methods=['GET', 'POST'])
 def cambio_puesto():

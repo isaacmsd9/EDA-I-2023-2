@@ -5,20 +5,14 @@
     </head>
     <body>
         <h1>Baja de Personal</h1>
-        <form action="/personal/baja" method="get">
-            <label for="tipo">Buscar por:</label><br>
-            <select id="tipo" name="tipo">
-                <option value="codigo">Código</option>
-                <option value="nombre">Nombre</option>
-            </select><br><br>
-            <input type="text" id="valor" name="valor"><br><br>
+        <form action="{{ url_for('baja_personal') }}" method="post">
+            <label for="codigo">Código del trabajador:</label><br>
+            <input type="text" id="codigo" name="codigo"><br><br>
             <input type="submit" value="Dar de baja">
         </form>
 
         {% if mensaje %}
             <p>{{ mensaje }}</p>
         {% endif %}
-
-        <a href="/personal">Volver al menú de personal</a>
     </body>
 </html>
