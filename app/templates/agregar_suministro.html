@@ -1,3 +1,4 @@
+<!-- En tu archivo agregar_suministro.html -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,5 +19,14 @@
         {% if mensaje %}
             <p>{{ mensaje }}</p>
         {% endif %}
+
+        <h2>Inventario</h2>
+        <ul>
+            {% for codigo, producto in inventario.items() %}
+                <li>{{ codigo }} - {{ producto.nombre }} - ${{ producto.precio }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ url_for('menu_inventario') }}">Volver al menú de inventario</a>
     </body>
 </html>
