@@ -155,9 +155,9 @@ def atender_cliente():
         
         if buscar_producto(codigo_producto):
             atencion_clientes(codigo_producto, mensaje)
-            return render_template('atender_clientes.html', mensaje='Queja registrada')
+            return render_template('atender_cliente.html', mensaje='Queja registrada')
         else:
-            return render_template('atender_clientes.html', mensaje='Producto no encontrado. Favor de ingresar un producto válido.')
+            return render_template('atender_cliente.html', mensaje='Producto no encontrado. Favor de ingresar un producto válido.')
     
     return render_template('menu_clientes.html')
 
