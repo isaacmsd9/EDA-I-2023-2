@@ -45,7 +45,13 @@ def ordenar_suministros(criterio):
                 items[k] = right_half[j]
                 j += 1
                 k += 1
-                
+
+    if criterio == 'nombre':
+        merge_sort(items, key=lambda item: item[1]['nombre'])
+    elif criterio == 'codigo':
+        merge_sort(items, key=lambda item: item[0])
+    return items
+
 def buscar_producto(busqueda):
     for codigo, producto in inventario.items():
         if codigo == busqueda or producto['nombre'] == busqueda:
