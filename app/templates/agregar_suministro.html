@@ -1,18 +1,25 @@
 <!doctype html>
-<title>Agregar Suministros</title>
-{% if success %}
-    <p>Suministro agregado con éxito.</p>
-{% else %}
-    <form action="/inventario/agregar" method="post">
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo">
-        <br>
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre">
-        <br>
-        <label for="precio">Precio:</label>
-        <input type="number" step="0.01" id="precio" name="precio">
-        <br>
-        <input type="submit" value="Agregar">
-    </form>
-{% endif %}
+<html>
+    <head>
+        <title>Agregar Suministros</title>
+    </head>
+    <body>
+        <h1>Agregar Suministro</h1>
+        {% if success %}
+            <p>Suministro agregado con éxito.</p>
+        {% else %}
+            <form action="/inventario/agregar" method="post">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo">
+                <br>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
+                <br>
+                <label for="precio">Precio:</label>
+                <input type="number" step="0.01" id="precio" name="precio">
+                <br>
+                <input type="submit" value="Agregar">
+            </form>
+        {% endif %}
+    </body>
+</html>
