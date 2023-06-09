@@ -11,6 +11,7 @@
                 <option value="codigo">Código</option>
                 <option value="nombre">Nombre</option>
             </select><br><br>
+            <label for="valor">Valor:</label><br>
             <input type="text" id="valor" name="valor"><br><br>
             <input type="submit" value="Dar de baja">
         </form>
@@ -18,5 +19,7 @@
         {% if mensaje %}
             <p>{{ mensaje }}</p>
         {% endif %}
+
+        <a href="/personal">Volver al menú de personal</a>
     </body>
 </html>
