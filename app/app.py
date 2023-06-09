@@ -16,12 +16,36 @@ def quitar_suministros(codigo):
 
 def ordenar_suministros(criterio):
     items = list(inventario.items())
-    if criterio == 'nombre':
-        items.sort(key=lambda item: item[1]['nombre'])
-    elif criterio == 'codigo':
-        items.sort(key=lambda item: item[0])
-    return items
 
+    def merge_sort(items, key):
+        if len(items) > 1:
+            mid = len(items) // 2
+            left_half = items[:mid]
+            right_half = items[mid:]
+
+            merge_sort(left_half, key)
+            merge_sort(right_half, key)
+
+            i = j = k = 0
+            while i < len(left_half) and j < len(right_half):
+                if key(left_half[i]) < key(right_half[j]):
+                    items[k] = left_half[i]
+                    i += 1
+                else:
+                    items[k] = right_half[j]
+                    j += 1
+                k += 1
+
+            while i < len(left_half):
+                items[k] = left_half[i]
+                i += 1
+                k += 1
+
+            while j < len(right_half):
+                items[k] = right_half[j]
+                j += 1
+                k += 1
+                
 def buscar_producto(busqueda):
     for codigo, producto in inventario.items():
         if codigo == busqueda or producto['nombre'] == busqueda:
