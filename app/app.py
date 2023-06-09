@@ -202,7 +202,7 @@ def cambio_puesto():
     
     if codigo in trabajadores:
         trabajadores[codigo]['puesto'] = puesto
-        return render_template('cambio_puesto.html', mensaje='Puesto cambiado')
+        return render_template('cambio_puesto.html', mensaje=f'Puesto cambiado a {puesto}')
     else:
         return render_template('cambio_puesto.html', mensaje='Trabajador no encontrado')
 
