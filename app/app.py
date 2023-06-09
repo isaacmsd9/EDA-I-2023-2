@@ -150,11 +150,14 @@ def atender_cliente():
     codigo_producto = request.args.get('codigo_producto')
     mensaje = request.args.get('mensaje')
     
-    if buscar_producto(codigo_producto):
-        atencion_clientes(codigo_producto, mensaje)
-        return 'Queja registrada'
-    else:
-        return 'Producto no encontrado. Favor de ingresar un producto válido.'
+    if codigo_producto and mensaje:
+        if buscar_producto(codigo_producto):
+            atencion_clientes(codigo_producto, mensaje)
+            return render_template('atender_cliente.html', mensaje='Queja registrada')
+        else:
+            return render_template('atender_cliente.html', mensaje='Producto no encontrado. Favor de ingresar un producto válido.')
+    
+    return render_template('atender_cliente.html')
 
 @app.route('/personal')
 def menu_personal():

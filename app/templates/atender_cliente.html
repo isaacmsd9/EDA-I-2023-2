@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Atención a Clientes</title>
+        <title>Atender Cliente</title>
     </head>
     <body>
-        <h1>Atención a Clientes</h1>
-        <h2>Registrar una queja</h2>
-        <form action="/clientes" method="get">
-            <input type="hidden" name="opcion" value="2">
+        <h1>Atender Cliente</h1>
+        <form action="/atender_cliente" method="get">
             <label for="codigo_producto">Código del producto:</label><br>
             <input type="text" id="codigo_producto" name="codigo_producto"><br><br>
             <label for="mensaje">Mensaje:</label><br>
             <textarea id="mensaje" name="mensaje"></textarea><br><br>
             <input type="submit" value="Enviar">
         </form>
+
+        {% if mensaje %}
+            <p>{{ mensaje }}</p>
+        {% endif %}
     </body>
 </html>
