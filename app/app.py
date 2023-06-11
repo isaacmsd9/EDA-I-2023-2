@@ -288,7 +288,7 @@ def menu_personal():
 
 # Definimos una ruta para la URL /personal/alta de la aplicación web que acepta métodos GET y POST
 @app.route('/personal/alta', methods=['GET', 'POST'])
-def alta_trabajador_view():
+def alta_personal():
     # Verificamos si el método de la solicitud es POST (es decir, si el usuario envió un formulario)
     if request.method == 'POST':
         # Si el método es POST, tomamos los datos del trabajador del formulario enviado por el usuario
@@ -306,7 +306,7 @@ def alta_trabajador_view():
 
 # Definimos una ruta para la URL /personal/baja de la aplicación web que acepta métodos GET y POST
 @app.route('/personal/baja', methods=['GET', 'POST'])
-def baja_trabajador_view():
+def baja_personal():
     # Verificamos si el método de la solicitud es POST (es decir, si el usuario envió un formulario)
     if request.method == 'POST':
         # Si el método es POST, tomamos el código del trabajador del formulario enviado por el usuario
@@ -324,7 +324,7 @@ def baja_trabajador_view():
 
 # Definimos una ruta para la URL /personal/cambio_puesto de la aplicación web que acepta métodos GET y POST
 @app.route('/personal/cambio_puesto', methods=['GET', 'POST'])
-def cambio_puesto_view():
+def cambio_puesto():
     # Verificamos si el método de la solicitud es POST (es decir, si el usuario envió un formulario)
     if request.method == 'POST':
         # Si el método es POST, tomamos el código y el nuevo puesto del trabajador del formulario enviado por el usuario
