@@ -298,11 +298,11 @@ def alta_trabajador_view():
         puesto = request.form['puesto']
         # Llamamos a la función alta_trabajador para dar de alta al trabajador en el sistema
         alta_trabajador(codigo, nombre, apellido, puesto)
-        # Renderizamos la plantilla alta_trabajador.html y le pasamos un mensaje como variable. Luego, devolvemos la plantilla renderizada como respuesta al usuario.
-        return render_template('alta_trabajador.html', mensaje=f'Trabajador dado de alta: {codigo} - {nombre} {apellido} - {puesto}')
+        # Renderizamos la plantilla alta_personal.html y le pasamos un mensaje como variable. Luego, devolvemos la plantilla renderizada como respuesta al usuario.
+        return render_template('alta_personal.html', mensaje=f'Trabajador dado de alta: {codigo} - {nombre} {apellido} - {puesto}')
     else:
         # Si el método no es POST (es decir, si el usuario está accediendo a la página por primera vez), simplemente renderizamos la plantilla alta_trabajador.html y la devolvemos como respuesta al usuario.
-        return render_template('alta_trabajador.html')
+        return render_template('alta_personal.html')
 
 # Definimos una ruta para la URL /personal/baja de la aplicación web que acepta métodos GET y POST
 @app.route('/personal/baja', methods=['GET', 'POST'])
@@ -313,14 +313,14 @@ def baja_trabajador_view():
         codigo = request.form['codigo']
         # Llamamos a la función baja_trabajador para dar de baja al trabajador en el sistema
         if baja_trabajador(codigo):
-            # Si el trabajador se dio de baja correctamente, renderizamos la plantilla baja_trabajador.html y le pasamos un mensaje como variable. Luego, devolvemos la plantilla renderizada como respuesta al usuario.
-            return render_template('baja_trabajador.html', mensaje='Trabajador dado de baja')
+            # Si el trabajador se dio de baja correctamente, renderizamos la plantilla baja_personal.html y le pasamos un mensaje como variable. Luego, devolvemos la plantilla renderizada como respuesta al usuario.
+            return render_template('baja_personal.html', mensaje='Trabajador dado de baja')
         else:
             # Si no se encontró al trabajador, renderizamos la plantilla baja_trabajador.html y le pasamos un mensaje de error como variable. Luego, devolvemos la plantilla renderizada como respuesta al usuario.
-            return render_template('baja_trabajador.html', mensaje='Trabajador no encontrado. Favor de ingresar un código válido.')
+            return render_template('baja_personal.html', mensaje='Trabajador no encontrado. Favor de ingresar un código válido.')
     else:
         # Si el método no es POST (es decir, si el usuario está accediendo a la página por primera vez), simplemente renderizamos la plantilla baja_trabajador.html y la devolvemos como respuesta al usuario.
-        return render_template('baja_trabajador.html')
+        return render_template('baja_personal.html')
 
 # Definimos una ruta para la URL /personal/cambio_puesto de la aplicación web que acepta métodos GET y POST
 @app.route('/personal/cambio_puesto', methods=['GET', 'POST'])
