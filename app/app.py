@@ -329,12 +329,12 @@ def cambio_puesto_view():
     if request.method == 'POST':
         # Si el método es POST, tomamos el código y el nuevo puesto del trabajador del formulario enviado por el usuario
         codigo = request.form['codigo']
-        nuevo_puesto = request.form['nuevo_puesto']
+        puesto = request.form['puesto']
         # Verificamos si el código del trabajador está en el diccionario de trabajadores
         if codigo in trabajadores:
             # Si está, actualizamos su puesto en el diccionario y renderizamos la plantilla cambio_puesto.html y le pasamos un mensaje como variable. Luego, devolvemos la plantilla renderizada como respuesta al usuario.
-            cambio_puesto(codigo, nuevo_puesto)
-            return render_template('cambio_puesto.html', mensaje=f'Puesto cambiado: {codigo} - {trabajadores[codigo]["nombre"]} {trabajadores[codigo]["apellido"]} - {nuevo_puesto}')
+            trabajadores[codigo]['puesto'] = puesto
+            return render_template('cambio_puesto.html', mensaje=f'Puesto cambiado: {codigo} - {trabajadores[codigo]["nombre"]} {trabajadores[codigo]["apellido"]} - {puesto}')
         else:
             # Si no está, renderizamos la plantilla cambio_puesto.html y le pasamos un mensaje de error como variable. Luego, devolvemos la plantilla renderizada como respuesta al usuario.
             return render_template('cambio_puesto.html', mensaje='Trabajador no encontrado. Favor de ingresar un código válido.')
